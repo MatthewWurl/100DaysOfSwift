@@ -1,4 +1,4 @@
-# 100DaysOfSwift - Not started yet.
+# 100DaysOfSwift
 <div align="center">
   <img src="https://i.ytimg.com/vi/RB5nWzdl-b8/maxresdefault.jpg" width="720">
 </div>
@@ -16,7 +16,7 @@ These projects were built for iOS 16 with Xcode 14.
 
 ## List of Projects
 ### Starting iOS
-- [ ] Project 1 [Days 16-18]
+- [ ] [Project 1: StormViewer](01-Project-1-StormViewer) [Days 16-18]
 - [ ] Project 2 [Days 19-21]
 - [ ] Project 3 [Day 22]
 ### Consolidation II
