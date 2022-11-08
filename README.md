@@ -18,7 +18,7 @@ These projects were built for iOS 16 with Xcode 14.
 ### Starting iOS
 - [x] [Project 1: StormViewer](01-Project-1-StormViewer) [Days 16-18]
 - [x] [Project 2: GuessTheFlag](02-Project-2-GuessTheFlag) [Days 19-21]
-- [ ] Project 3 [Day 22]
+- [x] [Project 3: SocialMedia](03-Project-3-SocialMedia) [Day 22]
 ### Consolidation II
 - [ ] Milestone (Projects 1-3) [Day 23]
 ---
