@@ -20,7 +20,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Project 2: GuessTheFlag](02-Project-2-GuessTheFlag) [Days 19-21]
 - [x] [Project 3: SocialMedia](03-Project-3-SocialMedia) [Day 22]
 ### Consolidation II
-- [ ] Milestone (Projects 1-3) [Day 23]
+- [x] [Milestone: WorldFlags (Projects 1-3)](04-Milestone-Project-WorldFlags) [Day 23]
 ---
 ### Web views, user input, and Auto Layout
 - [ ] Project 4 [Days 24-26]
