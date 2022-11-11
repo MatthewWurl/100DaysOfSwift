@@ -11,7 +11,8 @@ import WebKit
 class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var progressView: UIProgressView!
-    var websites = ["apple.com", "hackingwithswift.com"]
+    var websiteToLoad: String!
+    var allowedWebsites: [String]!
     
     override func loadView() {
         webView = WKWebView()
@@ -22,17 +23,24 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Open",
-            style: .plain,
-            target: self,
-            action: #selector(openTapped)
-        )
+        navigationItem.largeTitleDisplayMode = .never
         
         let spacer = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
             target: nil,
             action: nil
+        )
+        let back = UIBarButtonItem(
+            image: UIImage(systemName: "arrow.backward"),
+            style: .plain,
+            target: webView,
+            action: #selector(webView.goBack)
+        )
+        let forward = UIBarButtonItem(
+            image: UIImage(systemName: "arrow.forward"),
+            style: .plain,
+            target: webView,
+            action: #selector(webView.goForward)
         )
         let refresh = UIBarButtonItem(
             barButtonSystemItem: .refresh,
@@ -44,7 +52,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         progressView.sizeToFit()
         let progressButton = UIBarButtonItem(customView: progressView)
         
-        toolbarItems = [progressButton, spacer, refresh]
+        toolbarItems = [progressButton, spacer, back, forward, spacer, refresh]
         navigationController?.isToolbarHidden = false
         
         webView.addObserver(
@@ -54,38 +62,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
             context: nil
         )
         
-        let url = URL(string: "https://\(websites[0])")!
+        let url = URL(string: "https://\(websiteToLoad!)")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
-    }
-    
-    @objc func openTapped() {
-        let ac = UIAlertController(
-            title: "Open page...",
-            message: nil,
-            preferredStyle: .actionSheet
-        )
-        
-        for website in websites {
-            ac.addAction(
-                UIAlertAction(title: website, style: .default, handler: openPage)
-            )
-        }
-        
-        ac.addAction(
-            UIAlertAction(title: "Cancel", style: .cancel)
-        )
-        
-        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        
-        present(ac, animated: true)
-    }
-    
-    func openPage(action: UIAlertAction) {
-        guard let actionTitle = action.title else { return }
-        guard let url = URL(string: "https://\(actionTitle)") else { return }
-        
-        webView.load(URLRequest(url: url))
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -102,7 +81,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let url = navigationAction.request.url
         
         if let host = url?.host {
-            for website in websites {
+            for website in allowedWebsites {
                 if host.contains(website) {
                     decisionHandler(.allow)
                     
@@ -112,5 +91,22 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
         
         decisionHandler(.cancel)
+        
+        // ISSUE SHOWING ALERT...
+//        showUnallowedWebsiteAlert()
+    }
+    
+    func showUnallowedWebsiteAlert() {
+        let ac = UIAlertController(
+            title: "Uh-oh!",
+            message: "Sorry, that website is not allowed!",
+            preferredStyle: .alert
+        )
+        
+        ac.addAction(
+            UIAlertAction(title: "Cancel", style: .cancel)
+        )
+        
+        present(ac, animated: true)
     }
 }
