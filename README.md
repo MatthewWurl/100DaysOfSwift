@@ -23,7 +23,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Milestone: WorldFlags (Projects 1-3)](04-Milestone-Project-WorldFlags) [Day 23]
 ---
 ### Web views, user input, and Auto Layout
-- [ ] Project 4 [Days 24-26]
+- [x] [Project 4: EasyBrowser](05-Project-4-EasyBrowser) [Days 24-26]
 - [ ] Project 5 [Days 27-29]
 - [ ] Project 6 [Days 30-31]
 ### Consolidation III
