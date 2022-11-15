@@ -118,7 +118,7 @@ class ViewController: UITableViewController {
             } else {
                 errorTitle = "Word already used"
                 errorMessage = "Be more original!"
-                showErrorMessage(title: errorMessage, message: errorTitle)
+                showErrorMessage(title: errorTitle, message: errorMessage)
             }
         } else {
             errorTitle = "Word not possible"
