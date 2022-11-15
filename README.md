@@ -16,15 +16,15 @@ These projects were built for iOS 16 with Xcode 14.
 
 ## List of Projects
 ### Starting iOS
-- [x] [Project 1: StormViewer](01-Project-1-StormViewer) [Days 16-18]
-- [x] [Project 2: GuessTheFlag](02-Project-2-GuessTheFlag) [Days 19-21]
-- [x] [Project 3: SocialMedia](03-Project-3-SocialMedia) [Day 22]
+- [x] [Project 1: Storm Viewer](01-Project-1-StormViewer) [Days 16-18]
+- [x] [Project 2: Guess the Flag](02-Project-2-GuessTheFlag) [Days 19-21]
+- [x] [Project 3: Social Media](03-Project-3-SocialMedia) [Day 22]
 ### Consolidation II
-- [x] [Milestone: WorldFlags (Projects 1-3)](04-Milestone-Project-WorldFlags) [Day 23]
+- [x] [Milestone: World Flags (Projects 1-3)](04-Milestone-Project-WorldFlags) [Day 23]
 ---
 ### Web views, user input, and Auto Layout
-- [x] [Project 4: EasyBrowser](05-Project-4-EasyBrowser) [Days 24-26]
-- [ ] Project 5 [Days 27-29]
+- [x] [Project 4: Easy Browser](05-Project-4-EasyBrowser) [Days 24-26]
+- [x] [Project 5: Word Scramble](06-Project-5-WordScramble) [Days 27-29]
 - [ ] Project 6 [Days 30-31]
 ### Consolidation III
 - [ ] Milestone (Projects 4-6) [Day 32]
