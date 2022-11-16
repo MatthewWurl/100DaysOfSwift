@@ -26,6 +26,8 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Project 4: Easy Browser](05-Project-4-EasyBrowser) [Days 24-26]
 - [x] [Project 5: Word Scramble](06-Project-5-WordScramble) [Days 27-29]
 - [ ] Project 6 [Days 30-31]
+  - [x] [Project 6A: Guess the Flag [Extended]](07A-Project-6A-GuessTheFlag)
+  - [ ] Project 6B: Auto Layout
 ### Consolidation III
 - [ ] Milestone (Projects 4-6) [Day 32]
 ---
