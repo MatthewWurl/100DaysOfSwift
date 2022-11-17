@@ -29,7 +29,7 @@ These projects were built for iOS 16 with Xcode 14.
   - [x] [Project 6A: Guess the Flag [Extended]](07A-Project-6A-GuessTheFlag)
   - [x] [Project 6B: Auto Layout](07B-Project-6B-AutoLayout)
 ### Consolidation III
-- [ ] Milestone (Projects 4-6) [Day 32]
+- [x] [Milestone: Shopping List (Projects 4-6)](08-Milestone-Project-ShoppingList) [Day 32]
 ---
 ### Codable, buttons, and GCD
 - [ ] Project 7 [Days 33-35]
