@@ -25,9 +25,9 @@ These projects were built for iOS 16 with Xcode 14.
 ### Web views, user input, and Auto Layout
 - [x] [Project 4: Easy Browser](05-Project-4-EasyBrowser) [Days 24-26]
 - [x] [Project 5: Word Scramble](06-Project-5-WordScramble) [Days 27-29]
-- [ ] Project 6 [Days 30-31]
+- [x] Project 6 [Days 30-31]
   - [x] [Project 6A: Guess the Flag [Extended]](07A-Project-6A-GuessTheFlag)
-  - [ ] Project 6B: Auto Layout
+  - [x] [Project 6B: Auto Layout](07B-Project-6B-AutoLayout)
 ### Consolidation III
 - [ ] Milestone (Projects 4-6) [Day 32]
 ---
