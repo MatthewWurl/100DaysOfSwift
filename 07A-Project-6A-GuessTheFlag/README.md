@@ -10,11 +10,11 @@ This project adds Auto Layout to Project 2. The game will now display properly w
 ### Light Mode
 
 <div>
-  <img src="Screenshots/Light/Light_01.png" width="250">
+  <img src="Screenshots/Light/Light_01.png" width="450">
 </div>
 
 ### Dark Mode
 
 <div>
-  <img src="Screenshots/Dark/Dark_01.png" width="250">
+  <img src="Screenshots/Dark/Dark_01.png" width="450">
 </div>
