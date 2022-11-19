@@ -15,6 +15,7 @@
 		B8018DC32927D7E20046AB92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8018DC12927D7E20046AB92 /* LaunchScreen.storyboard */; };
 		B8018DCB2927DAF50046AB92 /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8018DCA2927DAF50046AB92 /* Petition.swift */; };
 		B8018DCD2927DB5D0046AB92 /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8018DCC2927DB5D0046AB92 /* Petitions.swift */; };
+		B8018DCF29287BED0046AB92 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8018DCE29287BED0046AB92 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B8018DC42927D7E20046AB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8018DCA2927DAF50046AB92 /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 		B8018DCC2927DB5D0046AB92 /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
+		B8018DCE29287BED0046AB92 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				B8018DB62927D7E10046AB92 /* AppDelegate.swift */,
 				B8018DB82927D7E10046AB92 /* SceneDelegate.swift */,
 				B8018DBA2927D7E10046AB92 /* TableViewController.swift */,
+				B8018DCE29287BED0046AB92 /* DetailViewController.swift */,
 				B8018DCA2927DAF50046AB92 /* Petition.swift */,
 				B8018DCC2927DB5D0046AB92 /* Petitions.swift */,
 				B8018DBC2927D7E10046AB92 /* Main.storyboard */,
@@ -147,6 +150,7 @@
 				B8018DBB2927D7E10046AB92 /* TableViewController.swift in Sources */,
 				B8018DCB2927DAF50046AB92 /* Petition.swift in Sources */,
 				B8018DB72927D7E10046AB92 /* AppDelegate.swift in Sources */,
+				B8018DCF29287BED0046AB92 /* DetailViewController.swift in Sources */,
 				B8018DB92927D7E10046AB92 /* SceneDelegate.swift in Sources */,
 				B8018DCD2927DB5D0046AB92 /* Petitions.swift in Sources */,
 			);

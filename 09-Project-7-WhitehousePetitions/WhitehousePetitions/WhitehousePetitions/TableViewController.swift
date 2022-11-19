@@ -13,15 +13,25 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+        var urlString: String {
+            if navigationController?.tabBarItem.tag == 0 {
+                return "https://www.hackingwithswift.com/samples/petitions-1.json"
+            } else {
+                // Live White House API is not working as of 11/18/22...
+                return "https://www.hackingwithswift.com/samples/petitions-2.json"
+            }
+        }
         
         if let url = URL(string: urlString) {
             // Synchronous URL loading realistically should not occur on main thread...
             // It will be fine for this project, though.
             if let data = try? Data(contentsOf: url) {
                 parseJSON(data)
+                return
             }
         }
+        
+        showError()
     }
     
     func parseJSON(_ data: Data) {
@@ -42,10 +52,29 @@ class TableViewController: UITableViewController {
         
         cell.textLabel?.text = petition.title
         
-        print("Title: \(petition.title)")
-        
         cell.detailTextLabel?.text = petition.body
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        detailVC.detailItem = petitions[indexPath.row]
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func showError() {
+        let ac = UIAlertController(
+            title: "Loading error",
+            message: "There was a problem loading the feed. Please check your connection and try again.",
+            preferredStyle: .alert
+        )
+        
+        ac.addAction(
+            UIAlertAction(title: "OK", style: .default)
+        )
+        
+        present(ac, animated: true)
     }
 }
