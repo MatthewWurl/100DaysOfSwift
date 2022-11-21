@@ -32,7 +32,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Milestone: Shopping List (Projects 4-6)](08-Milestone-Project-ShoppingList) [Day 32]
 ---
 ### Codable, buttons, and GCD
-- [ ] Project 7 [Days 33-35]
+- [x] [Project 7: Whitehouse Petitions](09-Project-7-WhitehousePetitions) [Days 33-35]
 - [ ] Project 8 [Days 36-38]
 - [ ] Project 9 [Days 39-40]
 ### Consolidation IV
