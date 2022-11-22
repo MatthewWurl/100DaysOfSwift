@@ -13,6 +13,8 @@
 		B840A9F1292B3BC600279EB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B840A9EF292B3BC600279EB4 /* Main.storyboard */; };
 		B840A9F3292B3BC700279EB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B840A9F2292B3BC700279EB4 /* Assets.xcassets */; };
 		B840A9F6292B3BC700279EB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B840A9F4292B3BC700279EB4 /* LaunchScreen.storyboard */; };
+		B840AA04292C951600279EB4 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = B840AA02292C951600279EB4 /* level2.txt */; };
+		B840AA05292C951600279EB4 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B840AA03292C951600279EB4 /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B840A9F2292B3BC700279EB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B840A9F5292B3BC700279EB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B840A9F7292B3BC700279EB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B840AA02292C951600279EB4 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		B840AA03292C951600279EB4 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				B840A9EF292B3BC600279EB4 /* Main.storyboard */,
 				B840A9F2292B3BC700279EB4 /* Assets.xcassets */,
 				B840A9F4292B3BC700279EB4 /* LaunchScreen.storyboard */,
+				B840AA03292C951600279EB4 /* level1.txt */,
+				B840AA02292C951600279EB4 /* level2.txt */,
 				B840A9F7292B3BC700279EB4 /* Info.plist */,
 			);
 			path = SwiftyWords;
@@ -125,8 +131,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B840AA05292C951600279EB4 /* level1.txt in Resources */,
 				B840A9F6292B3BC700279EB4 /* LaunchScreen.storyboard in Resources */,
 				B840A9F3292B3BC700279EB4 /* Assets.xcassets in Resources */,
+				B840AA04292C951600279EB4 /* level2.txt in Resources */,
 				B840A9F1292B3BC600279EB4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
