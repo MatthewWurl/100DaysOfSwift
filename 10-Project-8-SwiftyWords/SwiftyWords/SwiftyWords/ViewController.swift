@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         }
     }
     var level = 1
-    var numLetterButtonsUsedCorrectly = 0 // To know when to advance levels...
+    var questionsRight = 0
     
     override func loadView() {
         view = UIView()
@@ -169,7 +169,6 @@ class ViewController: UIViewController {
             )
             ac.addAction(
                 UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-                    self?.clearTapped()
                     self?.score -= 1
                 }
             )
@@ -179,7 +178,6 @@ class ViewController: UIViewController {
             return
         }
         
-        numLetterButtonsUsedCorrectly += activatedButtons.count
         activatedButtons.removeAll()
         
         var splitAnswers = answersLabel.text?.components(separatedBy: .newlines)
@@ -188,9 +186,10 @@ class ViewController: UIViewController {
         
         currentAnswer.text = ""
         score += 1
+        questionsRight += 1
         
         // Check if the game is over...
-        if numLetterButtonsUsedCorrectly == 20 {
+        if questionsRight == 7 {
             let ac = UIAlertController(
                 title: "Well done!",
                 message: "Are you ready for the next level?",
@@ -220,7 +219,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc func clearTapped(_ sender: UIButton? = nil) {
+    @objc func clearTapped(_ sender: UIButton) {
         currentAnswer.text = ""
         
         for button in activatedButtons {
