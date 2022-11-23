@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         }
     }
     var level = 1
+    var numLetterButtonsUsedCorrectly = 0 // To know when to advance levels...
     
     override func loadView() {
         view = UIView()
@@ -134,6 +135,8 @@ class ViewController: UIViewController {
                     width: width, height: height
                 )
                 letterButton.frame = frame
+                letterButton.layer.borderColor = UIColor.lightGray.cgColor
+                letterButton.layer.borderWidth = 1
                 
                 buttonsView.addSubview(letterButton)
                 letterButtons.append(letterButton)
@@ -157,34 +160,52 @@ class ViewController: UIViewController {
     
     @objc func submitTapped(_ sender: UIButton) {
         guard let answerText = currentAnswer.text else { return }
+        guard let solutionPosition = solutions.firstIndex(of: answerText) else {
+            // Solution does not exist...
+            let ac = UIAlertController(
+                title: "Incorrect!",
+                message: "Sorry, that solution doesn't work.",
+                preferredStyle: .alert
+            )
+            ac.addAction(
+                UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                    self?.clearTapped()
+                    self?.score -= 1
+                }
+            )
+            
+            present(ac, animated: true)
+            
+            return
+        }
         
-        if let solutionPosition = solutions.firstIndex(of: answerText) {
-            activatedButtons.removeAll()
+        numLetterButtonsUsedCorrectly += activatedButtons.count
+        activatedButtons.removeAll()
+        
+        var splitAnswers = answersLabel.text?.components(separatedBy: .newlines)
+        splitAnswers?[solutionPosition] = answerText
+        answersLabel.text = splitAnswers?.joined(separator: "\n")
+        
+        currentAnswer.text = ""
+        score += 1
+        
+        // Check if the game is over...
+        if numLetterButtonsUsedCorrectly == 20 {
+            let ac = UIAlertController(
+                title: "Well done!",
+                message: "Are you ready for the next level?",
+                preferredStyle: .alert
+            )
             
-            var splitAnswers = answersLabel.text?.components(separatedBy: .newlines)
-            splitAnswers?[solutionPosition] = answerText
-            answersLabel.text = splitAnswers?.joined(separator: "\n")
-            
-            currentAnswer.text = ""
-            score += 1
-            
-            if score % 7 == 0 {
-                let ac = UIAlertController(
-                    title: "Well done!",
-                    message: "Are you ready for the next level?",
-                    preferredStyle: .alert
+            ac.addAction(
+                UIAlertAction(
+                    title: "Let's go!",
+                    style: .default,
+                    handler: levelUp
                 )
-                
-                ac.addAction(
-                    UIAlertAction(
-                        title: "Let's go!",
-                        style: .default,
-                        handler: levelUp
-                    )
-                )
-                
-                present(ac, animated: true)
-            }
+            )
+            
+            present(ac, animated: true)
         }
     }
     
@@ -199,7 +220,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc func clearTapped(_ sender: UIButton) {
+    @objc func clearTapped(_ sender: UIButton? = nil) {
         currentAnswer.text = ""
         
         for button in activatedButtons {
