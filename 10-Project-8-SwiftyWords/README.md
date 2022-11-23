@@ -13,7 +13,7 @@ This project includes solutions to the challenges.
 ### Light Mode
 
 <div>
-  <img src="Screenshots/Light/Light_01.png" width="250">
+  <img src="Screenshots/Light/Light_01.png" width="350">
   <img src="Screenshots/Light/Light_02.png" width="500">
   <img src="Screenshots/Light/Light_03.png" width="500">
   <img src="Screenshots/Light/Light_04.png" width="500">
