@@ -33,7 +33,7 @@ These projects were built for iOS 16 with Xcode 14.
 ---
 ### Codable, buttons, and GCD
 - [x] [Project 7: Whitehouse Petitions](09-Project-7-WhitehousePetitions) [Days 33-35]
-- [ ] Project 8 [Days 36-38]
+- [x] [Project 8: Swifty Words](10-Project-8-SwiftyWords) [Days 36-38]
 - [ ] Project 9 [Days 39-40]
 ### Consolidation IV
 - [ ] Milestone (Projects 7-9) [Day 41]
