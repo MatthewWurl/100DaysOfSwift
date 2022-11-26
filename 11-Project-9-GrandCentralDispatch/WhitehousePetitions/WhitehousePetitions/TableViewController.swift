@@ -125,11 +125,15 @@ class TableViewController: UITableViewController {
                 if let filterString = ac.textFields?.first?.text?.trimmingCharacters(in: .whitespaces) {
                     guard let self = self else { return }
                     
-                    self.filteredPetitions = self.petitions.filter { petition in
-                        petition.title.localizedCaseInsensitiveContains(filterString)
+                    DispatchQueue.global(qos: .background).async {
+                        self.filteredPetitions = self.petitions.filter { petition in
+                            petition.title.localizedCaseInsensitiveContains(filterString)
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
-                    
-                    self.tableView.reloadData()
                 }
             }
         )
