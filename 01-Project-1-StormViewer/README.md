@@ -2,6 +2,8 @@
 
 This project includes solutions to the challenges.
 
+*Note: This project includes a challenge from [project 9](11-Project-9-GrandCentralDispatch). The loading of the images from the bundle now happens on the background.*
+
 ## Challenges
 
 1. Use Interface Builder to select the text label inside your table view cell and adjust its font size to something larger – experiment and see what looks good.
