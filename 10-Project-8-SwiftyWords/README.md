@@ -2,6 +2,8 @@
 
 This project includes solutions to the challenges.
 
+*Note: This project includes a challenge from [project 9](../11-Project-9-GrandCentralDispatch). The loading and parsing of a level now takes place in the background.*
+
 ## Challenges
 
 1. Use the techniques you learned in project 2 to draw a thin gray line around the buttons view, to make it stand out from the rest of the UI.
