@@ -36,7 +36,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Project 8: Swifty Words](10-Project-8-SwiftyWords) [Days 36-38]
 - [x] [Project 9: Grand Central Dispatch](11-Project-9-GrandCentralDispatch) [Days 39-40]
 ### Consolidation IV
-- [ ] Milestone (Projects 7-9) [Day 41]
+- [x] [Milestone: Hangman (Projects 7-9)](12-Milestone-Project-Hangman) [Day 41]
 ---
 ### A whole new world
 - [ ] Project 10 [Days 42-44]
