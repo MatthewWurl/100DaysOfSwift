@@ -13,10 +13,16 @@ class ViewController: UIViewController {
     private var letterButtons: [UIButton] = []
     
     private var layoutConstraints: [NSLayoutConstraint] = []
-    
     private var words: [String] = []
+    private var wordToGuess: String?
     
-    var incorrectGuesses = 0 {
+    private var promptArray: [String] = [] {
+        didSet {
+            promptLabel.text = promptArray.joined()
+        }
+    }
+    
+    private var incorrectGuesses = 0 {
         didSet {
             incorrectGuessesLabel.text = "Incorrect guesses: \(incorrectGuesses)/7"
         }
@@ -24,7 +30,7 @@ class ViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         navigationItem.title = "Hangman"
         
@@ -41,6 +47,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         loadWordsFile()
+        
+        restartGame()
     }
     
     func loadWordsFile() {
@@ -55,14 +63,26 @@ class ViewController: UIViewController {
         words = fileContents.trimmingCharacters(in: .newlines).components(separatedBy: .newlines)
     }
     
+    @objc func restartGame(_ action: UIAlertAction? = nil) {
+        wordToGuess = words.randomElement()
+        
+        promptArray = Array<String>(repeating: "?", count: wordToGuess!.count)
+        
+        incorrectGuesses = 0
+        
+        for button in letterButtons {
+            button.isHidden = false
+        }
+    }
+    
     func setupBarButtonItems() {
-        let resetButton = UIBarButtonItem(
+        let restartButton = UIBarButtonItem(
             barButtonSystemItem: .refresh,
             target: self,
-            action: nil
+            action: #selector(restartGame)
         )
         
-        navigationItem.leftBarButtonItem = resetButton
+        navigationItem.leftBarButtonItem = restartButton
     }
     
     func buildPromptLabel() {
@@ -70,7 +90,6 @@ class ViewController: UIViewController {
         promptLabel.translatesAutoresizingMaskIntoConstraints = false
         promptLabel.textAlignment = .center
         promptLabel.font = UIFont.systemFont(ofSize: 32, weight: .semibold)
-        promptLabel.text = "PROMPT"
         
         view.addSubview(promptLabel)
         
@@ -109,7 +128,7 @@ class ViewController: UIViewController {
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ]
         
-        let letters = (97...122).map({Character(UnicodeScalar($0))}) // Returns an array of 26 characters a-z
+        let letters = (97...122).map { Character(UnicodeScalar($0)) } // Returns an array of 26 characters a-z
         var charIndex = 0
         
         for row in 0..<4 {
@@ -119,6 +138,7 @@ class ViewController: UIViewController {
                 let letterButton = UIButton(type: .system)
                 letterButton.setTitle(String(letters[charIndex]), for: .normal)
                 letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+                letterButton.tintColor = .label
                 
                 let frame = CGRect(
                     x: col * 44, y: row * 44,
@@ -141,8 +161,54 @@ class ViewController: UIViewController {
     }
     
     @objc func letterButtonTapped(_ sender: UIButton) {
+        guard let wordToGuess = wordToGuess else { return }
+        guard let senderTitle = sender.currentTitle else { return }
+        
         sender.isHidden = true
         
-        // TODO: Logic for letter button tapped...
+        let charTapped = Character(senderTitle)
+        var charFound = false
+        
+        // Replace any question marks with char...
+        for (index, char) in wordToGuess.enumerated() {
+            if char == charTapped {
+                promptArray[index] = String(char)
+                charFound = true
+            }
+        }
+        
+        // Char does not exist in the word...
+        if !charFound {
+            incorrectGuesses += 1
+            
+            if incorrectGuesses == 7 {
+                showGameOverAlert(
+                    title: "Out of guesses!",
+                    message: "The word was \(wordToGuess). Play again?"
+                )
+            }
+        }
+        
+        // Player has found the word...
+        if wordToGuess == promptArray.joined() {
+            showGameOverAlert(
+                title: "Congrats!",
+                message: "You correctly guessed the word. Play again?"
+            )
+        }
+    }
+    
+    func showGameOverAlert(title: String, message: String) {
+        let ac = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        ac.addAction(
+            UIAlertAction(title: "OK", style: .default, handler: restartGame)
+        )
+        
+        present(ac, animated: true)
     }
 }
