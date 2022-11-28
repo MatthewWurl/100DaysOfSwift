@@ -23,4 +23,9 @@ This project includes solutions to the challenges.
 
 ### Dark Mode
 
-*No screenshots provided (since dark mode was not supported for the project).*
+<div>
+  <img src="Screenshots/Dark/Dark_01.png" width="350">
+  <img src="Screenshots/Dark/Dark_02.png" width="500">
+  <img src="Screenshots/Dark/Dark_03.png" width="500">
+  <img src="Screenshots/Dark/Dark_04.png" width="500">
+</div>
