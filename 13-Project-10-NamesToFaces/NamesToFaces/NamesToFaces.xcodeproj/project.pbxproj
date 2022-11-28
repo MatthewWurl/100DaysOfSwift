@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8B97BE329351B630006A50A /* Bundle-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B97BE229351B630006A50A /* Bundle-Extension.swift */; };
+		B8B97BE52935380B0006A50A /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B97BE42935380B0006A50A /* Person.swift */; };
 		B8CEF14E293330A4006982F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CEF14D293330A4006982F6 /* AppDelegate.swift */; };
 		B8CEF150293330A4006982F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CEF14F293330A4006982F6 /* SceneDelegate.swift */; };
 		B8CEF152293330A4006982F6 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CEF151293330A4006982F6 /* CollectionViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B8B97BE229351B630006A50A /* Bundle-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Extension.swift"; sourceTree = "<group>"; };
+		B8B97BE42935380B0006A50A /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		B8CEF14A293330A4006982F6 /* NamesToFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NamesToFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CEF14D293330A4006982F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8CEF14F293330A4006982F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				B8CEF14F293330A4006982F6 /* SceneDelegate.swift */,
 				B8CEF151293330A4006982F6 /* CollectionViewController.swift */,
 				B8CEF161293332D8006982F6 /* PersonCell.swift */,
+				B8B97BE42935380B0006A50A /* Person.swift */,
+				B8B97BE229351B630006A50A /* Bundle-Extension.swift */,
 				B8CEF153293330A4006982F6 /* Main.storyboard */,
 				B8CEF156293330A5006982F6 /* Assets.xcassets */,
 				B8CEF158293330A5006982F6 /* LaunchScreen.storyboard */,
@@ -141,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B97BE52935380B0006A50A /* Person.swift in Sources */,
 				B8CEF152293330A4006982F6 /* CollectionViewController.swift in Sources */,
+				B8B97BE329351B630006A50A /* Bundle-Extension.swift in Sources */,
 				B8CEF14E293330A4006982F6 /* AppDelegate.swift in Sources */,
 				B8CEF162293332D8006982F6 /* PersonCell.swift in Sources */,
 				B8CEF150293330A4006982F6 /* SceneDelegate.swift in Sources */,
