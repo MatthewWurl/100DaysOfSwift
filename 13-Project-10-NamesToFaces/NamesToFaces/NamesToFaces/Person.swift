@@ -8,10 +8,12 @@
 import UIKit
 
 class Person: NSObject {
+    static let defaultName = "Unknown"
+    
     var name: String
     let image: String
     
-    init(name: String, image: String) {
+    init(name: String = defaultName, image: String) {
         self.name = name
         self.image = image
     }

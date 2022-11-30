@@ -37,7 +37,7 @@ class CollectionViewController: UICollectionViewController,
         
         let path = Bundle.documentsDirectory.appending(path: person.image)
         cell.imageView.image = UIImage(contentsOfFile: path.path)
-        cell.imageView.layer.borderColor = UIColor(white: 0, alpha: 0.3).cgColor
+        cell.imageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
         cell.imageView.layer.borderWidth = 2
         cell.imageView.layer.cornerRadius = 3
         cell.layer.cornerRadius = 7
@@ -48,34 +48,75 @@ class CollectionViewController: UICollectionViewController,
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = people[indexPath.item]
         
-        let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: .alert)
-        ac.addTextField()
+        switch person.name == Person.defaultName {
+        case true:
+            showRenameAlert(for: person)
+        case false:
+            showRenameOrDeleteAlert(for: person)
+        }
+    }
+    
+    func showRenameAlert(for person: Person) {
+        let renameAlert = UIAlertController(
+            title: "Selected \"\(person.name)\"",
+            message: "What would you like this person's new name to be?",
+            preferredStyle: .alert
+        )
+        renameAlert.addTextField()
         
-        ac.addAction(
-            UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
-                guard let newName = ac?.textFields?.first?.text else { return }
+        renameAlert.addAction(
+            UIAlertAction(title: "OK", style: .default) { [weak self, weak renameAlert] _ in
+                guard let newName = renameAlert?.textFields?.first?.text else { return }
                 person.name = newName
                 
                 self?.collectionView.reloadData()
             }
         )
         
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        renameAlert.addAction(
+            UIAlertAction(title: "Cancel", style: .cancel)
+        )
         
-        present(ac, animated: true)
+        present(renameAlert, animated: true)
+    }
+    
+    func showRenameOrDeleteAlert(for person: Person) {
+        let deleteAlert = UIAlertController(
+            title: "Selected \"\(person.name)\"",
+            message: "Would you like to rename or delete this person?",
+            preferredStyle: .alert
+        )
+        
+        // Rename...
+        deleteAlert.addAction(
+            UIAlertAction(title: "Rename", style: .default) { [weak self] _ in
+                self?.showRenameAlert(for: person)
+            }
+        )
+        
+        // Delete...
+        deleteAlert.addAction(
+            UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+                guard let personIndex = self?.people.firstIndex(of: person) else { return }
+                
+                self?.people.remove(at: personIndex)
+                self?.collectionView.reloadData()
+            }
+        )
+        
+        // Cancel...
+        deleteAlert.addAction(
+            UIAlertAction(title: "Cancel", style: .cancel)
+        )
+        
+        present(deleteAlert, animated: true)
     }
     
     @objc func addNewPerson() {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
-        
-        switch UIImagePickerController.isSourceTypeAvailable(.camera) {
-        case true:
-            picker.sourceType = .camera
-        case false:
-            picker.sourceType = .photoLibrary
-        }
+        picker.sourceType = .photoLibrary
         
         present(picker, animated: true)
     }
@@ -90,7 +131,7 @@ class CollectionViewController: UICollectionViewController,
             try? jpegData.write(to: imagePath)
         }
         
-        let person = Person(name: "Unknown", image: imageName)
+        let person = Person(image: imageName)
         people.append(person)
         collectionView?.reloadData()
         
