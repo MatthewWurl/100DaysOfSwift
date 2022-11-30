@@ -39,7 +39,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Milestone: Hangman (Projects 7-9)](12-Milestone-Project-Hangman) [Day 41]
 ---
 ### A whole new world
-- [ ] Project 10 [Days 42-44]
+- [x] [Project 10: Names to Faces](13-Project-10-NamesToFaces) [Days 42-44]
 - [ ] Project 11 [Days 45-47]
 - [ ] Project 12 [Days 48-49]
 ### Consolidation V
