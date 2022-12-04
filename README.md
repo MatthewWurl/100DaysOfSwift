@@ -41,7 +41,9 @@ These projects were built for iOS 16 with Xcode 14.
 ### A whole new world
 - [x] [Project 10: Names to Faces](13-Project-10-NamesToFaces) [Days 42-44]
 - [x] [Project 11: Pachinko](14-Project-11-Pachinko) [Days 45-47]
-- [ ] Project 12 [Days 48-49]
+- [x] Project 12 [Days 48-49]
+  - [x] [Project 12A: UserDefaults (NSCoding)](15A-Project-12A-UserDefaults)
+  - [x] [Project 12B: UserDefaults (Codable)](15B-Project-12B-UserDefaults)
 ### Consolidation V
 - [ ] Milestone (Projects 10-12) [Day 50]
 ---
