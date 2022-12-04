@@ -21,6 +21,14 @@ class CollectionViewController: UICollectionViewController,
             action: #selector(addNewPerson)
         )
         navigationItem.leftBarButtonItem = addButton
+        
+        if let savedPeople = UserDefaults.standard.object(forKey: "people") as? Data {
+            do {
+                people = try JSONDecoder().decode([Person].self, from: savedPeople)
+            } catch {
+                print("Failed to load people.")
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -69,6 +77,7 @@ class CollectionViewController: UICollectionViewController,
                 guard let newName = renameAlert?.textFields?.first?.text else { return }
                 person.name = newName
                 
+                self?.save()
                 self?.collectionView.reloadData()
             }
         )
@@ -100,6 +109,7 @@ class CollectionViewController: UICollectionViewController,
                 guard let personIndex = self?.people.firstIndex(of: person) else { return }
                 
                 self?.people.remove(at: personIndex)
+                self?.save()
                 self?.collectionView.reloadData()
             }
         )
@@ -133,8 +143,17 @@ class CollectionViewController: UICollectionViewController,
         
         let person = Person(image: imageName)
         people.append(person)
+        save()
         collectionView?.reloadData()
         
         dismiss(animated: true)
+    }
+    
+    func save() {
+        if let savedData = try? JSONEncoder().encode(people) {
+            UserDefaults.standard.set(savedData, forKey: "people")
+        } else {
+            print("Failed to save people.")
+        }
     }
 }

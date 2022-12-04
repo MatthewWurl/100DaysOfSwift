@@ -37,13 +37,28 @@ class ViewController: UITableViewController {
             fatalError("There was an issue setting the array including all words.")
         }
         
-        startGame()
+        if let savedTitle = UserDefaults.standard.data(forKey: "word"),
+           let savedUsedWords = UserDefaults.standard.data(forKey: "usedWords") {
+            // Continue the game...
+            let decoder = JSONDecoder()
+            
+            do {
+                title = try decoder.decode(String.self, from: savedTitle)
+                usedWords = try decoder.decode([String].self, from: savedUsedWords)
+            } catch {
+                print("Error loading title and/or the used words.")
+            }
+        } else {
+            startGame()
+        }
     }
     
     @objc func startGame() {
         title = allWords.randomElement()?.uppercased()
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
+        
+        saveGame()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,6 +140,8 @@ class ViewController: UITableViewController {
             errorMessage = "Can't spell that word from \(title!.lowercased())."
             showErrorMessage(title: errorTitle, message: errorMessage)
         }
+        
+        saveGame()
     }
     
     func isPossible(word: String) -> Bool {
@@ -168,6 +185,18 @@ class ViewController: UITableViewController {
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         
         present(ac, animated: true)
+    }
+    
+    func saveGame() {
+        let encoder = JSONEncoder()
+        
+        if let savedTitle = try? encoder.encode(title),
+           let savedUsedWords = try? encoder.encode(usedWords) {
+            UserDefaults.standard.set(savedTitle, forKey: "word")
+            UserDefaults.standard.set(savedUsedWords, forKey: "usedWords")
+        } else {
+            print("There was an error saving the title and/or the used words.")
+        }
     }
 }
 

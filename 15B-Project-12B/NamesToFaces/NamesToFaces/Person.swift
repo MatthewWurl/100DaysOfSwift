@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Person: NSObject {
+class Person: NSObject, Codable {
     static let defaultName = "Unknown"
     
     var name: String

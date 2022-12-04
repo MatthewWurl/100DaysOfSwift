@@ -16,8 +16,9 @@ class ViewController: UIViewController {
     var score = 0
     var correctAnswer = 0
     var questionCount = 0
+    var highScore = 0
     
-    let NUMBER_OF_QUESTIONS = 10
+    let NUMBER_OF_QUESTIONS = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +30,38 @@ class ViewController: UIViewController {
         button1.layer.borderWidth = 1
         button2.layer.borderWidth = 1
         button3.layer.borderWidth = 1
-
+        
         button1.layer.borderColor = UIColor.lightGray.cgColor
         button2.layer.borderColor = UIColor.lightGray.cgColor
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
         askQuestion()
+        
+        // Get high score from saved data if found...
+        if let savedHighScore = UserDefaults.standard.data(forKey: "highScore") {
+            do {
+                highScore = try JSONDecoder().decode(Int.self, from: savedHighScore)
+            } catch {
+                print("Failed to load high score.")
+            }
+        }
     }
-
+    
     func askQuestion(action: UIAlertAction! = nil) {
         if questionCount == NUMBER_OF_QUESTIONS {
+            let scoreMessage: String
+            
+            switch score > highScore {
+            case true:
+                scoreMessage = "You got a new high score of \(score)!"
+                saveHighScore(as: score)
+            case false:
+                scoreMessage = "Your score was \(score)."
+            }
+            
             let gameOverAlert = UIAlertController(
                 title: "Game Over!",
-                message: "You answered all \(NUMBER_OF_QUESTIONS) questions!\nYour score was \(score)/\(NUMBER_OF_QUESTIONS).",
+                message: "You answered all \(NUMBER_OF_QUESTIONS) questions!\n\(scoreMessage)",
                 preferredStyle: .alert
             )
             
@@ -101,5 +121,15 @@ class ViewController: UIViewController {
         )
         
         present(scoreAlert, animated: true)
+    }
+    
+    func saveHighScore(as newHighScore: Int) {
+        highScore = newHighScore
+        
+        if let savedHighScore = try? JSONEncoder().encode(newHighScore) {
+            UserDefaults.standard.set(savedHighScore, forKey: "highScore")
+        } else {
+            print("Failed to save high score.")
+        }
     }
 }
