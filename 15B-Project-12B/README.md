@@ -1,4 +1,4 @@
-# Project 12A - UserDefaults (A)
+# Project 12A - UserDefaults (B)
 
 This project is an extension of [Project 10: Names to Faces](13-Project-10-NamesToFaces).
 
