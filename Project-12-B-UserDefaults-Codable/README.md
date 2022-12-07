@@ -1,4 +1,4 @@
-# Project 12A - UserDefaults (Codable)
+# Project 12B - UserDefaults (Codable)
 
 This project is an extension of [Project 10: Names to Faces](../Project-10-NamesToFaces).
 
