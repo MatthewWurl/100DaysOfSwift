@@ -8,7 +8,7 @@
 import Foundation
 
 struct PhotoEntry: Codable {
-    var caption: String
+    let caption: String
     let image: String
     
     var imagePath: String {

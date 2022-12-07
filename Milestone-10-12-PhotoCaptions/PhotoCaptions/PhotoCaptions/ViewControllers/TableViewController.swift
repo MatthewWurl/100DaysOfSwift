@@ -24,6 +24,15 @@ class TableViewController: UITableViewController,
             action: #selector(addButtonPressed)
         )
         navigationItem.rightBarButtonItem = addButton
+        
+        // Load photo entries from UserDefaults if possible...
+        if let photoEntriesData = UserDefaults.standard.data(forKey: "photoEntries") {
+            do {
+                photoEntries = try JSONDecoder().decode([PhotoEntry].self, from: photoEntriesData)
+            } catch {
+                print("Failed to load photo entries.")
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,10 +47,6 @@ class TableViewController: UITableViewController,
         cell.textLabel?.numberOfLines = 0
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -80,8 +85,8 @@ class TableViewController: UITableViewController,
     
     func showCaptionAlert(forImage image: String) {
         let captionAlert = UIAlertController(
-            title: "Please type a caption.",
-            message: nil,
+            title: nil,
+            message: "What would you like the caption to be?",
             preferredStyle: .alert
         )
         
@@ -93,10 +98,20 @@ class TableViewController: UITableViewController,
                 let photoEntry = PhotoEntry(caption: caption, image: image)
                 self?.photoEntries.append(photoEntry)
                 
+                self?.savePhotoEntries()
+                
                 self?.tableView.reloadData()
             }
         )
         
         present(captionAlert, animated: true)
+    }
+    
+    func savePhotoEntries() {
+        if let savedPhotoEntries = try? JSONEncoder().encode(photoEntries) {
+            UserDefaults.standard.set(savedPhotoEntries, forKey: "photoEntries")
+        } else {
+            print("Failed to save photo entries.")
+        }
     }
 }
