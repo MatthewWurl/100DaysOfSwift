@@ -2,7 +2,7 @@
 
 This project includes solutions to the challenges.
 
-*Note: This project includes a challenge from [project 9](../11-Project-9-GrandCentralDispatch). The loading of the images from the bundle now happens on the background.*
+*Note: This project includes a challenge from [project 9](../Project-09-GrandCentralDispatch). The loading of the images from the bundle now happens on the background.*
 
 ## Challenges
 
