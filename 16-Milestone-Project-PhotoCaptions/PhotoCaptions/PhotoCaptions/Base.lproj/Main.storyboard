@@ -33,8 +33,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="3Pg-bm-wvm"/>
                     <connections>
-                        <segue destination="Ggh-NU-01D" kind="show" identifier="GoToDetailVC" id="quo-iZ-z1e"/>
-                        <segue destination="JuN-PA-s7Y" kind="presentation" identifier="ShowAddVC" id="ZHh-e4-ffH"/>
+                        <segue destination="Ggh-NU-01D" kind="show" identifier="" id="quo-iZ-z1e"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYX-wy-yZy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -48,14 +47,28 @@
                     <view key="view" contentMode="scaleToFill" id="cok-4x-jtV">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UCp-22-L5g">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="m07-Sx-O99"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="UCp-22-L5g" secondAttribute="bottom" id="265-QX-aWf"/>
+                            <constraint firstItem="UCp-22-L5g" firstAttribute="top" secondItem="cok-4x-jtV" secondAttribute="top" id="OZd-Oh-d9R"/>
+                            <constraint firstItem="UCp-22-L5g" firstAttribute="trailing" secondItem="m07-Sx-O99" secondAttribute="trailing" id="aTH-A9-SpG"/>
+                            <constraint firstItem="UCp-22-L5g" firstAttribute="leading" secondItem="m07-Sx-O99" secondAttribute="leading" id="zj5-yR-Gx5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JAy-es-UZI"/>
+                    <connections>
+                        <outlet property="imageView" destination="UCp-22-L5g" id="U79-tC-4Vb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1QP-nd-yTj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="-385"/>
+            <point key="canvasLocation" x="1684.6153846153845" y="-385.30805687203792"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="60q-hQ-ouZ">
@@ -74,40 +87,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7VR-J4-iAO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-160" y="-384.59715639810423"/>
-        </scene>
-        <!--Add View Controller-->
-        <scene sceneID="9fH-xD-tz1">
-            <objects>
-                <viewController storyboardIdentifier="AddVC" id="vtt-FV-HXj" customClass="AddViewController" customModule="PhotoCaptions" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AH7-VL-Xju">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="4Z2-YW-jfn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="YL3-gz-Jm9"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jaY-aF-vqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1693.8461538461538" y="357.58293838862556"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="N3a-Ah-nHG">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JuN-PA-s7Y" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k2e-CQ-Ppi">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vtt-FV-HXj" kind="relationship" relationship="rootViewController" id="TvL-Mz-dtL"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G6l-2Q-rC7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="764.61538461538464" y="357.58293838862556"/>
         </scene>
     </scenes>
     <resources>

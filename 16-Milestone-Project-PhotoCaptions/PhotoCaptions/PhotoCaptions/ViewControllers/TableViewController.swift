@@ -35,7 +35,7 @@ class TableViewController: UITableViewController,
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCaptionCell", for: indexPath)
         cell.textLabel?.text = photoEntry.caption
-        cell.imageView?.image = UIImage(contentsOfFile: photoEntry.imagePath)
+        cell.textLabel?.numberOfLines = 0
         
         return cell
     }
@@ -45,7 +45,11 @@ class TableViewController: UITableViewController,
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailVC") {
+        let photoEntry = photoEntries[indexPath.row]
+        
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailVC") as? DetailViewController {
+            detailVC.photoEntry = photoEntry
+            
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
@@ -69,18 +73,30 @@ class TableViewController: UITableViewController,
             try? jpegData.write(to: imagePath)
         }
         
-        let photoEntry = PhotoEntry(caption: "Some caption...", image: imageName)
-        photoEntries.append(photoEntry)
-        tableView.reloadData()
-        
         dismiss(animated: true)
-    }
-}
-
-extension Bundle {
-    var documentsDirectory: URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         
-        return paths[0]
+        showCaptionAlert(forImage: imageName)
+    }
+    
+    func showCaptionAlert(forImage image: String) {
+        let captionAlert = UIAlertController(
+            title: "Please type a caption.",
+            message: nil,
+            preferredStyle: .alert
+        )
+        
+        captionAlert.addTextField()
+        captionAlert.addAction(
+            UIAlertAction(title: "OK", style: .default) { [weak self, weak captionAlert] _ in
+                guard let caption = captionAlert?.textFields?.first?.text else { return }
+                
+                let photoEntry = PhotoEntry(caption: caption, image: image)
+                self?.photoEntries.append(photoEntry)
+                
+                self?.tableView.reloadData()
+            }
+        )
+        
+        present(captionAlert, animated: true)
     }
 }

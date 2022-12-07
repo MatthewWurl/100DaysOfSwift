@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct PhotoEntry {
-    let caption: String?
+struct PhotoEntry: Codable {
+    var caption: String
     let image: String
     
     var imagePath: String {
