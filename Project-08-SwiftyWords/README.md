@@ -2,7 +2,7 @@
 
 This project includes solutions to the challenges.
 
-*Note: This project includes a challenge from [project 9](../11-Project-9-GrandCentralDispatch). The loading and parsing of a level now takes place in the background.*
+*Note: This project includes a challenge from [project 9](../Project-09-GrandCentralDispatch). The loading and parsing of a level now takes place in the background.*
 
 ## Challenges
 
