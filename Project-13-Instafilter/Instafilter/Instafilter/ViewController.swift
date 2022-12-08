@@ -13,6 +13,8 @@ class ViewController: UIViewController,
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensitySlider: UISlider!
     
+    var context: CIContext!
+    var currentFilter: CIFilter!
     var currentImage: UIImage!
     
     override func viewDidLoad() {
@@ -26,6 +28,9 @@ class ViewController: UIViewController,
             action: #selector(importPicture)
         )
         navigationItem.rightBarButtonItem = addButton
+        
+        context = CIContext()
+        currentFilter = CIFilter(name: "CISepiaTone")
     }
     
     @objc func importPicture() {
@@ -42,18 +47,125 @@ class ViewController: UIViewController,
         dismiss(animated: true)
         
         currentImage = image
-    }
-
-    @IBAction func intensityChanged(_ sender: UISlider) {
         
+        let beginImage = CIImage(image: currentImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        applyProcessing()
+    }
+    
+    @IBAction func intensityChanged(_ sender: UISlider) {
+        applyProcessing()
     }
     
     @IBAction func changeFilterTapped(_ sender: UIButton) {
+        let filters = [
+            "CIBumpDistortion", "CIGaussianBlur", "CIPixellate", "CISepiaTone",
+            "CITwirlDistortion", "CIUnsharpMask", "CIVignette"
+        ]
         
+        let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
+        
+        for filter in filters {
+            ac.addAction(
+                UIAlertAction(title: filter, style: .default, handler: setFilter)
+            )
+        }
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        ac.popoverPresentationController?.sourceView = sender
+        ac.popoverPresentationController?.sourceRect = sender.bounds
+        
+        present(ac, animated: true)
+    }
+    
+    func setFilter(_ action: UIAlertAction) {
+        guard currentImage != nil else { return }
+        guard let actionTitle = action.title else { return }
+        
+        currentFilter = CIFilter(name: actionTitle)
+        
+        let beginImage = CIImage(image: currentImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        applyProcessing()
     }
     
     @IBAction func saveTapped(_ sender: UIButton) {
+        guard let image = imageView.image else { return }
         
+        UIImageWriteToSavedPhotosAlbum(
+            image,
+            self,
+            #selector(image(_:didFinishSavingWithError:contextInfo:)), nil
+        )
+    }
+    
+    func applyProcessing() {
+        let inputKeys = currentFilter.inputKeys
+        let intensity = intensitySlider.value
+        
+        if inputKeys.contains(kCIInputIntensityKey) {
+            currentFilter.setValue(intensity, forKey: kCIInputIntensityKey)
+        }
+        
+        if inputKeys.contains(kCIInputRadiusKey) {
+            currentFilter.setValue(intensity * 200, forKey: kCIInputRadiusKey)
+        }
+        
+        if inputKeys.contains(kCIInputScaleKey) {
+            currentFilter.setValue(intensity * 10, forKey: kCIInputScaleKey)
+        }
+        
+        if inputKeys.contains(kCIInputCenterKey) {
+            currentFilter.setValue(
+                CIVector(
+                    x: currentImage.size.width / 2,
+                    y: currentImage.size.height / 2
+                ),
+                forKey: kCIInputCenterKey
+            )
+        }
+        
+        guard let outputImage = currentFilter.outputImage else { return }
+        
+        let cgImage = context.createCGImage(
+            outputImage,
+            from: outputImage.extent
+        )
+        
+        if let cgImage = cgImage {
+            let processedImage = UIImage(cgImage: cgImage)
+            imageView.image = processedImage
+        }
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        guard error == nil else {
+            let ac = UIAlertController(
+                title: "Save error",
+                message: error?.localizedDescription,
+                preferredStyle: .alert
+            )
+            ac.addAction(
+                UIAlertAction(title: "OK", style: .default)
+            )
+            
+            present(ac, animated: true)
+            
+            return
+        }
+        
+        let ac = UIAlertController(
+            title: "Saved!",
+            message: "Your altered image has been saved to your photos.",
+            preferredStyle: .alert
+        )
+        ac.addAction(
+            UIAlertAction(title: "OK", style: .default)
+        )
+        
+        present(ac, animated: true)
     }
 }
-
