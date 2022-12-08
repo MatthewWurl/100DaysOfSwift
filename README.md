@@ -45,7 +45,7 @@ These projects were built for iOS 16 with Xcode 14.
   - [x] [Project 12A: UserDefaults (NSCoding)](Project-12-A-UserDefaults-NSCoding)
   - [x] [Project 12B: UserDefaults (Codable)](Project-12-B-UserDefaults-Codable)
 ### Consolidation V
-- [ ] Milestone (Projects 10-12) [Day 50]
+- [x] [Milestone: Photo Captions (Projects 10-12)](Milestone-10-12-PhotoCaptions) [Day 50]
 ---
 ### Images and animation
 - [ ] Project 13 [Days 52-54]
