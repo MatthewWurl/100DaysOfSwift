@@ -16,34 +16,34 @@ These projects were built for iOS 16 with Xcode 14.
 
 ## List of Projects
 ### Starting iOS
-- [x] [Project 1: Storm Viewer](01-Project-1-StormViewer) [Days 16-18]
-- [x] [Project 2: Guess the Flag](02-Project-2-GuessTheFlag) [Days 19-21]
-- [x] [Project 3: Social Media](03-Project-3-SocialMedia) [Day 22]
+- [x] [Project 1: Storm Viewer](Project-01-StormViewer) [Days 16-18]
+- [x] [Project 2: Guess the Flag](Project-02-GuessTheFlag) [Days 19-21]
+- [x] [Project 3: Social Media](Project-03-SocialMedia) [Day 22]
 ### Consolidation II
-- [x] [Milestone: World Flags (Projects 1-3)](04-Milestone-Project-WorldFlags) [Day 23]
+- [x] [Milestone: World Flags (Projects 1-3)](Milestone-01-03-WorldFlags) [Day 23]
 ---
 ### Web views, user input, and Auto Layout
-- [x] [Project 4: Easy Browser](05-Project-4-EasyBrowser) [Days 24-26]
-- [x] [Project 5: Word Scramble](06-Project-5-WordScramble) [Days 27-29]
+- [x] [Project 4: Easy Browser](Project-04-EasyBrowser) [Days 24-26]
+- [x] [Project 5: Word Scramble](Project-05-WordScramble) [Days 27-29]
 - [x] Project 6 [Days 30-31]
-  - [x] [Project 6A: Guess the Flag [Extended]](07A-Project-6A-GuessTheFlag)
-  - [x] [Project 6B: Auto Layout](07B-Project-6B-AutoLayout)
+  - [x] [Project 6A: Guess the Flag [Extended]](Project-06-A-GuessTheFlag)
+  - [x] [Project 6B: Auto Layout](Project-06-B-AutoLayout)
 ### Consolidation III
-- [x] [Milestone: Shopping List (Projects 4-6)](08-Milestone-Project-ShoppingList) [Day 32]
+- [x] [Milestone: Shopping List (Projects 4-6)](Milestone-04-06-ShoppingList) [Day 32]
 ---
 ### Codable, buttons, and GCD
-- [x] [Project 7: Whitehouse Petitions](09-Project-7-WhitehousePetitions) [Days 33-35]
-- [x] [Project 8: Swifty Words](10-Project-8-SwiftyWords) [Days 36-38]
-- [x] [Project 9: Grand Central Dispatch](11-Project-9-GrandCentralDispatch) [Days 39-40]
+- [x] [Project 7: Whitehouse Petitions](Project-07-WhitehousePetitions) [Days 33-35]
+- [x] [Project 8: Swifty Words](Project-08-SwiftyWords) [Days 36-38]
+- [x] [Project 9: Grand Central Dispatch](Project-09-GrandCentralDispatch) [Days 39-40]
 ### Consolidation IV
-- [x] [Milestone: Hangman (Projects 7-9)](12-Milestone-Project-Hangman) [Day 41]
+- [x] [Milestone: Hangman (Projects 7-9)](Milestone-07-09-Hangman) [Day 41]
 ---
 ### A whole new world
-- [x] [Project 10: Names to Faces](13-Project-10-NamesToFaces) [Days 42-44]
-- [x] [Project 11: Pachinko](14-Project-11-Pachinko) [Days 45-47]
+- [x] [Project 10: Names to Faces](Project-10-NamesToFaces) [Days 42-44]
+- [x] [Project 11: Pachinko](Project-11-Pachinko) [Days 45-47]
 - [x] Project 12 [Days 48-49]
-  - [x] [Project 12A: UserDefaults (NSCoding)](15A-Project-12A-UserDefaults)
-  - [x] [Project 12B: UserDefaults (Codable)](15B-Project-12B-UserDefaults)
+  - [x] [Project 12A: UserDefaults (NSCoding)](Project-12-A-UserDefaults-NSCoding)
+  - [x] [Project 12B: UserDefaults (Codable)](Project-12-B-UserDefaults-Codable)
 ### Consolidation V
 - [ ] Milestone (Projects 10-12) [Day 50]
 ---
