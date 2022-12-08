@@ -26,13 +26,23 @@ class TableViewController: UITableViewController,
         navigationItem.rightBarButtonItem = addButton
         
         // Load photo entries from UserDefaults if possible...
-        if let photoEntriesData = UserDefaults.standard.data(forKey: "photoEntries") {
-            do {
-                photoEntries = try JSONDecoder().decode([PhotoEntry].self, from: photoEntriesData)
-            } catch {
-                print("Failed to load photo entries.")
+        DispatchQueue.global().async { [weak self] in
+            if let photoEntriesData = UserDefaults.standard.data(forKey: "photoEntries") {
+                do {
+                    self?.photoEntries = try JSONDecoder().decode([PhotoEntry].self, from: photoEntriesData)
+                } catch {
+                    print("Failed to load photo entries.")
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,10 +51,16 @@ class TableViewController: UITableViewController,
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let photoEntry = photoEntries[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoEntryCell", for: indexPath)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCaptionCell", for: indexPath)
-        cell.textLabel?.text = photoEntry.caption
-        cell.textLabel?.numberOfLines = 0
+        if let cell = cell as? PhotoEntryCell {
+            cell.photoLabel.text = photoEntry.caption
+            
+            cell.photoImageView.image = UIImage(contentsOfFile: photoEntry.imagePath)
+            cell.photoImageView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.6).cgColor
+            cell.photoImageView.layer.borderWidth = 1
+            cell.photoImageView.layer.cornerRadius = 8
+        }
         
         return cell
     }
@@ -71,16 +87,20 @@ class TableViewController: UITableViewController,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
         
-        let imageName = UUID().uuidString
-        let imagePath = Bundle.main.documentsDirectory.appendingPathExtension(imageName)
-        
-        if let jpegData = image.jpegData(compressionQuality: 0.8) {
-            try? jpegData.write(to: imagePath)
+        DispatchQueue.global().async { [weak self] in
+            let imageName = UUID().uuidString
+            let imagePath = Bundle.main.documentsDirectory.appendingPathExtension(imageName)
+            
+            if let jpegData = image.jpegData(compressionQuality: 0.8) {
+                try? jpegData.write(to: imagePath)
+            }
+            
+            DispatchQueue.main.async {
+                self?.dismiss(animated: true)
+                
+                self?.showCaptionAlert(forImage: imageName)
+            }
         }
-        
-        dismiss(animated: true)
-        
-        showCaptionAlert(forImage: imageName)
     }
     
     func showCaptionAlert(forImage image: String) {
@@ -99,8 +119,6 @@ class TableViewController: UITableViewController,
                 self?.photoEntries.append(photoEntry)
                 
                 self?.savePhotoEntries()
-                
-                self?.tableView.reloadData()
             }
         )
         
@@ -108,10 +126,18 @@ class TableViewController: UITableViewController,
     }
     
     func savePhotoEntries() {
-        if let savedPhotoEntries = try? JSONEncoder().encode(photoEntries) {
-            UserDefaults.standard.set(savedPhotoEntries, forKey: "photoEntries")
-        } else {
-            print("Failed to save photo entries.")
+        DispatchQueue.global().async { [weak self] in
+            guard let photoEntries = self?.photoEntries else { return }
+            
+            if let savedPhotoEntries = try? JSONEncoder().encode(photoEntries) {
+                UserDefaults.standard.set(savedPhotoEntries, forKey: "photoEntries")
+            } else {
+                print("Failed to save photo entries.")
+            }
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
     }
 }

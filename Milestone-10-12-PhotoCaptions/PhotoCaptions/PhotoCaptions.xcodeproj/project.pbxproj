@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80064A02941AC34002AAD55 /* PhotoEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B800649F2941AC34002AAD55 /* PhotoEntryCell.swift */; };
 		B8B97C18293DCE560006A50A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B97C17293DCE560006A50A /* AppDelegate.swift */; };
 		B8B97C1A293DCE560006A50A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B97C19293DCE560006A50A /* SceneDelegate.swift */; };
 		B8B97C1C293DCE560006A50A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B97C1B293DCE560006A50A /* TableViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B800649F2941AC34002AAD55 /* PhotoEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntryCell.swift; sourceTree = "<group>"; };
 		B8B97C14293DCE560006A50A /* PhotoCaptions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCaptions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B97C17293DCE560006A50A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8B97C19293DCE560006A50A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				B8B97C30293E73000006A50A /* ViewControllers */,
 				B8DD602E29406FC100BFFF1D /* Bundle-Extension.swift */,
 				B8B97C31293E73210006A50A /* PhotoEntry.swift */,
+				B800649F2941AC34002AAD55 /* PhotoEntryCell.swift */,
 				B8B97C1D293DCE560006A50A /* Main.storyboard */,
 				B8B97C20293DCE580006A50A /* Assets.xcassets */,
 				B8B97C22293DCE580006A50A /* LaunchScreen.storyboard */,
@@ -159,6 +162,7 @@
 				B8DD602F29406FC100BFFF1D /* Bundle-Extension.swift in Sources */,
 				B8B97C18293DCE560006A50A /* AppDelegate.swift in Sources */,
 				B8B97C2E293E701C0006A50A /* DetailViewController.swift in Sources */,
+				B80064A02941AC34002AAD55 /* PhotoEntryCell.swift in Sources */,
 				B8B97C32293E73210006A50A /* PhotoEntry.swift in Sources */,
 				B8B97C1A293DCE560006A50A /* SceneDelegate.swift in Sources */,
 			);

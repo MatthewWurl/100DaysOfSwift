@@ -17,13 +17,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PhotoCaptionCell" id="JAe-z3-U8N">
-                                <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PhotoEntryCell" rowHeight="119" id="JAe-z3-U8N" customClass="PhotoEntryCell" customModule="PhotoCaptions" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="390" height="119"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JAe-z3-U8N" id="wPF-Rq-sz0">
-                                    <rect key="frame" x="0.0" y="0.0" width="359.66666666666669" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="359.66666666666669" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pDL-li-JPt">
+                                            <rect key="frame" x="10" y="10" width="150" height="99"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="KoC-8l-0Mj"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frk-Si-9ay">
+                                            <rect key="frame" x="170" y="21" width="171.66666666666663" height="77"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pDL-li-JPt" firstAttribute="top" secondItem="wPF-Rq-sz0" secondAttribute="top" constant="10" id="8me-jQ-H7Q"/>
+                                        <constraint firstItem="frk-Si-9ay" firstAttribute="leading" secondItem="pDL-li-JPt" secondAttribute="trailing" constant="10" id="H5Q-mN-iQZ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="frk-Si-9ay" secondAttribute="trailing" constant="10" id="NZH-QV-8M4"/>
+                                        <constraint firstItem="frk-Si-9ay" firstAttribute="top" secondItem="wPF-Rq-sz0" secondAttribute="topMargin" constant="10" id="c9c-La-BKG"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="frk-Si-9ay" secondAttribute="bottom" constant="10" id="p5Y-ro-jcr"/>
+                                        <constraint firstAttribute="bottom" secondItem="pDL-li-JPt" secondAttribute="bottom" constant="10" id="xhQ-5g-Pr6"/>
+                                        <constraint firstItem="pDL-li-JPt" firstAttribute="leading" secondItem="wPF-Rq-sz0" secondAttribute="leading" constant="10" id="zs5-WF-Dqx"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="photoImageView" destination="pDL-li-JPt" id="CXg-ac-4Yl"/>
+                                    <outlet property="photoLabel" destination="frk-Si-9ay" id="Rxq-5L-iAV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
