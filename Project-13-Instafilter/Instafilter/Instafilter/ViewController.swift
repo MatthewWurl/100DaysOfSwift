@@ -10,11 +10,20 @@ import UIKit
 class ViewController: UIViewController,
                       UIImagePickerControllerDelegate,
                       UINavigationControllerDelegate {
+    @IBOutlet weak var changeFilterButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensitySlider: UISlider!
+    @IBOutlet weak var radiusSlider: UISlider!
     
     var context: CIContext!
-    var currentFilter: CIFilter!
+    var currentFilter: CIFilter! {
+        didSet {
+            changeFilterButton.setTitle(
+                "Current Filter: \(currentFilter.name)",
+                for: .normal
+            )
+        }
+    }
     var currentImage: UIImage!
     
     override func viewDidLoad() {
@@ -58,6 +67,10 @@ class ViewController: UIViewController,
         applyProcessing()
     }
     
+    @IBAction func radiusChanged(_ sender: UISlider) {
+        applyProcessing()
+    }
+    
     @IBAction func changeFilterTapped(_ sender: UIButton) {
         let filters = [
             "CIBumpDistortion", "CIGaussianBlur", "CIPixellate", "CISepiaTone",
@@ -93,7 +106,21 @@ class ViewController: UIViewController,
     }
     
     @IBAction func saveTapped(_ sender: UIButton) {
-        guard let image = imageView.image else { return }
+        guard let image = imageView.image else {
+            // No image in image view...
+            let ac = UIAlertController(
+                title: "No image found",
+                message: "There is nothing that can be saved!",
+                preferredStyle: .alert
+            )
+            ac.addAction(
+                UIAlertAction(title: "OK", style: .default)
+            )
+            
+            present(ac, animated: true)
+            
+            return
+        }
         
         UIImageWriteToSavedPhotosAlbum(
             image,
@@ -105,17 +132,18 @@ class ViewController: UIViewController,
     func applyProcessing() {
         let inputKeys = currentFilter.inputKeys
         let intensity = intensitySlider.value
+        let radius = radiusSlider.value
         
         if inputKeys.contains(kCIInputIntensityKey) {
             currentFilter.setValue(intensity, forKey: kCIInputIntensityKey)
         }
         
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(intensity * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(radius * 800, forKey: kCIInputRadiusKey)
         }
         
         if inputKeys.contains(kCIInputScaleKey) {
-            currentFilter.setValue(intensity * 10, forKey: kCIInputScaleKey)
+            currentFilter.setValue(intensity * 2, forKey: kCIInputScaleKey)
         }
         
         if inputKeys.contains(kCIInputCenterKey) {
