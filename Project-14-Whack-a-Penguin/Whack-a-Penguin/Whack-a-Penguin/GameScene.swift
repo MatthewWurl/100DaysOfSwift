@@ -8,6 +8,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    var finalScoreLabel: SKLabelNode!
     var slots: [WhackSlot] = []
     var scoreLabel: SKLabelNode!
     
@@ -94,6 +95,16 @@ class GameScene: SKScene {
             gameOver.position = CGPoint(x: 512, y: 384)
             gameOver.zPosition = 1
             addChild(gameOver)
+            
+            finalScoreLabel = SKLabelNode(fontNamed: "Marker Felt Wide")
+            finalScoreLabel.text = "FINAL SCORE: \(score)"
+            finalScoreLabel.position = CGPoint(x: 512, y: 384 - 80)
+            finalScoreLabel.horizontalAlignmentMode = .center
+            finalScoreLabel.fontSize = 48
+            finalScoreLabel.zPosition = 1
+            addChild(finalScoreLabel)
+            
+            run(SKAction.playSoundFileNamed("gameOver.caf", waitForCompletion: false))
             
             return
         }

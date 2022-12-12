@@ -17,6 +17,8 @@
 		B8A27F332944787200F0C540 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = B8A27F312944787200F0C540 /* whack.caf */; };
 		B8A27F342944787200F0C540 /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = B8A27F322944787200F0C540 /* whackBad.caf */; };
 		B8A27F3629447AC000F0C540 /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A27F3529447AC000F0C540 /* WhackSlot.swift */; };
+		B8A27F3D29459B6A00F0C540 /* gameOver.caf in Resources */ = {isa = PBXBuildFile; fileRef = B8A27F3C29459B6A00F0C540 /* gameOver.caf */; };
+		B8A27F4129459F3200F0C540 /* SmokeParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = B8A27F4029459F3200F0C540 /* SmokeParticles.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		B8A27F312944787200F0C540 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
 		B8A27F322944787200F0C540 /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
 		B8A27F3529447AC000F0C540 /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
+		B8A27F3C29459B6A00F0C540 /* gameOver.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameOver.caf; sourceTree = "<group>"; };
+		B8A27F4029459F3200F0C540 /* SmokeParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeParticles.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +72,12 @@
 				B8A27F20294473B300F0C540 /* GameScene.swift */,
 				B8A27F22294473B300F0C540 /* GameViewController.swift */,
 				B8A27F3529447AC000F0C540 /* WhackSlot.swift */,
+				B8A27F4029459F3200F0C540 /* SmokeParticles.sks */,
 				B8A27F24294473B300F0C540 /* Main.storyboard */,
 				B8A27F27294473B500F0C540 /* Assets.xcassets */,
 				B8A27F312944787200F0C540 /* whack.caf */,
 				B8A27F322944787200F0C540 /* whackBad.caf */,
+				B8A27F3C29459B6A00F0C540 /* gameOver.caf */,
 				B8A27F29294473B500F0C540 /* LaunchScreen.storyboard */,
 			);
 			path = "Whack-a-Penguin";
@@ -135,12 +141,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8A27F3D29459B6A00F0C540 /* gameOver.caf in Resources */,
 				B8A27F26294473B300F0C540 /* Main.storyboard in Resources */,
 				B8A27F332944787200F0C540 /* whack.caf in Resources */,
 				B8A27F1D294473B300F0C540 /* GameScene.sks in Resources */,
 				B8A27F28294473B500F0C540 /* Assets.xcassets in Resources */,
 				B8A27F2B294473B500F0C540 /* LaunchScreen.storyboard in Resources */,
 				B8A27F342944787200F0C540 /* whackBad.caf in Resources */,
+				B8A27F4129459F3200F0C540 /* SmokeParticles.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
