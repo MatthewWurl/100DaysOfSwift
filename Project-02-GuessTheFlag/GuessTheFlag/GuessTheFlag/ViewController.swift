@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     var questionCount = 0
     var highScore = 0
     
-    let NUMBER_OF_QUESTIONS = 4
+    let NUMBER_OF_QUESTIONS = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,8 @@ class ViewController: UIViewController {
     }
     
     func askQuestion(action: UIAlertAction! = nil) {
+        resetFlagScales()
+        
         if questionCount == NUMBER_OF_QUESTIONS {
             let scoreMessage: String
             
@@ -99,6 +101,10 @@ class ViewController: UIViewController {
         var title: String
         var message = ""
         
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.35, initialSpringVelocity: 5) {
+            sender.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        }
+        
         if sender.tag == correctAnswer {
             title = "Correct!"
             score += 1
@@ -131,5 +137,11 @@ class ViewController: UIViewController {
         } else {
             print("Failed to save high score.")
         }
+    }
+    
+    func resetFlagScales() {
+        button1.transform = .identity
+        button2.transform = .identity
+        button3.transform = .identity
     }
 }
