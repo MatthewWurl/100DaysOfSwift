@@ -8,6 +8,10 @@ This project includes solutions to the challenges.
 2. Make the Change Filter button change its title to show the name of the currently selected filter.
 3. Experiment with having more than one slider, to control each of the input keys you care about. For example, you might have one for radius and one for intensity.
 
+## Additional Challenges
+
+* [Project 15](../Project-15-Animation) - Go back to project 13 and make the image view fade in when a new picture is chosen. To make this work, set the `alpha` to 0 first.
+
 ## Screenshots
 
 ### Light Mode
