@@ -10,7 +10,8 @@ This project includes solutions to the challenges.
 
 ## Additional Challenges
 
-* [Project 9](Project-09-GrandCentralDispatch) - Modify project 8 so that loading and parsing a level takes place in the background. Once you’re done, make sure you update the UI on the main thread!
+* [Project 9](../Project-09-GrandCentralDispatch) - Modify project 8 so that loading and parsing a level takes place in the background. Once you’re done, make sure you update the UI on the main thread!
+* [Project 15](../Project-15-Animation) - Go back to project 8 and make the letter group buttons fade out when they are tapped. We were using the `isHidden` property, but you'll need to switch to `alpha` because `isHidden` is either true or false, it has no animatable values between.
 
 ## Screenshots
 
