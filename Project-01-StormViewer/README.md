@@ -10,7 +10,7 @@ This project includes solutions to the challenges.
 
 ## Additional Challenges
 
-* [Project 9](https://github.com/AnxietyMedicine/100DaysOfSwift/tree/main/Project-09-GrandCentralDispatch) - Modify project 1 so that loading the list of NSSL images from our bundle happens in the background. Make sure you call reloadData() on the table view once loading has finished!
+* [Project 9](../Project-09-GrandCentralDispatch) - Modify project 1 so that loading the list of NSSL images from our bundle happens in the background. Make sure you call reloadData() on the table view once loading has finished!
 
 ## Screenshots
 
