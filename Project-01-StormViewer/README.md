@@ -9,6 +9,7 @@ This project includes solutions to the challenges.
 3. Rather than show image names in the detail title bar, show “Picture X of Y”, where Y is the total number of images and X is the selected picture’s position in the array. Make sure you count from 1 rather than 0.
 
 ## Additional Challenges
+
 * [Project 9](https://github.com/AnxietyMedicine/100DaysOfSwift/tree/main/Project-09-GrandCentralDispatch) - Modify project 1 so that loading the list of NSSL images from our bundle happens in the background. Make sure you call reloadData() on the table view once loading has finished!
 
 ## Screenshots
