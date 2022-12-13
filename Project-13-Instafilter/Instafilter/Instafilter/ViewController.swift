@@ -55,7 +55,13 @@ class ViewController: UIViewController,
         
         dismiss(animated: true)
         
+        imageView.alpha = 0
+        
         currentImage = image
+        
+        UIView.animate(withDuration: 0.75, delay: 0.1, options: .curveEaseIn) {
+            self.imageView.alpha = 1
+        }
         
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
