@@ -50,7 +50,7 @@ These projects were built for iOS 16 with Xcode 14.
 ### Images and animation
 - [x] [Project 13: Instafilter](Project-13-Instafilter) [Days 52-54]
 - [x] [Project 14: Whack-a-Penguin](Project-14-Whack-a-Penguin) [Days 55-56]
-- [ ] Project 15 [Days 57-58]
+- [x] [Project 15: Animation](Project-15-Animation) [Days 57-58]
 ### Consolidation VI
 - [ ] Milestone (Projects 13-15) [Day 59]
 ---
