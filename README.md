@@ -52,7 +52,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Project 14: Whack-a-Penguin](Project-14-Whack-a-Penguin) [Days 55-56]
 - [x] [Project 15: Animation](Project-15-Animation) [Days 57-58]
 ### Consolidation VI
-- [ ] Milestone (Projects 13-15) [Day 59]
+- [x] [Milestone: Country Facts (Projects 13-15)](Milestone-13-15-CountryFacts) [Day 59]
 ---
 ### Maps and bugs
 - [ ] Project 16 [Days 60-61]
