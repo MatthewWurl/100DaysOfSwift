@@ -55,7 +55,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Milestone: Country Facts (Projects 13-15)](Milestone-13-15-CountryFacts) [Day 59]
 ---
 ### Maps and bugs
-- [ ] Project 16 [Days 60-61]
+- [x] [Project 16: Capital Cities](Project-16-CapitalCities) [Days 60-61]
 - [ ] Project 17 [Days 62-63]
 - [ ] Project 18 [Days 64-65]
 ### Consolidation VII
