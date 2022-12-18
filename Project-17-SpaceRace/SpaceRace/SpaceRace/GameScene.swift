@@ -8,17 +8,20 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var finalScoreLabel: SKLabelNode!
     var player: SKSpriteNode!
     var starfield: SKEmitterNode!
     var scoreLabel: SKLabelNode!
     
+    var amountOfEnemiesForTimeInterval = 0
     var gameTimer: Timer?
     var isGameOver = false
     var possibleEnemies = ["ball", "hammer", "tv"]
+    var timeInterval = 1.0
     
     var score = 0 {
         didSet {
-            scoreLabel.text = "Score: \(score)"
+            scoreLabel.text = "Score: \(score.formatted())"
         }
     }
     
@@ -48,7 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         gameTimer = Timer.scheduledTimer(
-            timeInterval: 0.35,
+            timeInterval: timeInterval,
             target: self,
             selector: #selector(createEnemy),
             userInfo: nil,
@@ -69,6 +72,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sprite.physicsBody?.angularVelocity = 5
         sprite.physicsBody?.linearDamping = 0
         sprite.physicsBody?.angularDamping = 0
+        
+        amountOfEnemiesForTimeInterval += 1
+        
+        if amountOfEnemiesForTimeInterval == 20 {
+            timeInterval -= 0.1
+            
+            gameTimer?.invalidate()
+            gameTimer = Timer.scheduledTimer(
+                timeInterval: timeInterval,
+                target: self,
+                selector: #selector(createEnemy),
+                userInfo: nil,
+                repeats: true
+            )
+            
+            amountOfEnemiesForTimeInterval = 0
+        }
     }
          
     override func update(_ currentTime: TimeInterval) {
@@ -96,12 +116,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.position = location
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endGame()
+    }
+    
     func didBegin(_ contact: SKPhysicsContact) {
         let explosion = SKEmitterNode(fileNamed: "explosion")!
         explosion.position = player.position
         addChild(explosion)
         
         player.removeFromParent()
+        endGame()
+        
+        gameTimer?.invalidate()
+    }
+    
+    func endGame() {
         isGameOver = true
+        gameTimer?.invalidate()
+        
+        finalScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        finalScoreLabel.text = "FINAL SCORE: \(score.formatted())"
+        finalScoreLabel.fontSize = 36
+        finalScoreLabel.position = CGPoint(x: 512, y: 384)
+        addChild(finalScoreLabel)
     }
 }
