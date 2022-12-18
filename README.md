@@ -56,7 +56,7 @@ These projects were built for iOS 16 with Xcode 14.
 ---
 ### Maps and bugs
 - [x] [Project 16: Capital Cities](Project-16-CapitalCities) [Days 60-61]
-- [ ] Project 17 [Days 62-63]
+- [x] [Project 17: Space Race](Project-17-SpaceRace) [Days 62-63]
 - [ ] Project 18 [Days 64-65]
 ### Consolidation VII
 - [ ] Milestone (Projects 16-18) [Day 66]
