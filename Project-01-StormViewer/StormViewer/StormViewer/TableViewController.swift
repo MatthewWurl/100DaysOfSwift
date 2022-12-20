@@ -44,7 +44,6 @@ class TableViewController: UITableViewController {
                 print("Failed to load picture view counts.")
             }
         } else {
-            print("Saved data does not exist.")
             // Does not exist already...
             for picture in pictures {
                 pictureShownCounts.updateValue(0, forKey: picture)
@@ -91,8 +90,6 @@ class TableViewController: UITableViewController {
         if let savedData = try? JSONEncoder().encode(pictureShownCounts) {
             UserDefaults.standard.set(savedData, forKey: "pictureShownCounts")
         }
-        
-        print(pictureShownCounts)
         
         tableView.reloadData()
     }

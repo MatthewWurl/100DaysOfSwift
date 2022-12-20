@@ -19,9 +19,9 @@ class DetailViewController: UIViewController {
         title = titleString
         navigationItem.largeTitleDisplayMode = .never
 
-        if let selectedImage = selectedImage {
-            imageView.image = UIImage(named: selectedImage)
-        }
+        assert(selectedImage != nil, "selectedImage does not have a value.")
+        
+        imageView.image = UIImage(named: selectedImage!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
