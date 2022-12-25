@@ -19,6 +19,7 @@
 		B82D4B75295416CA0034082D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82D4B73295416CA0034082D /* MainInterface.storyboard */; };
 		B82D4B79295416CA0034082D /* Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B82D4B6A295416CA0034082D /* Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B82D4B7E295419540034082D /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = B82D4B7D295419540034082D /* Action.js */; };
+		B82D4BBD2956BF240034082D /* ExampleScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82D4BBC2956BF240034082D /* ExampleScripts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		B82D4B74295416CA0034082D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B82D4B76295416CA0034082D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B82D4B7D295419540034082D /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
+		B82D4BBC2956BF240034082D /* ExampleScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleScripts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				B82D4B6F295416CA0034082D /* Media.xcassets */,
 				B82D4B71295416CA0034082D /* ActionViewController.swift */,
+				B82D4BBC2956BF240034082D /* ExampleScripts.swift */,
 				B82D4B73295416CA0034082D /* MainInterface.storyboard */,
 				B82D4B76295416CA0034082D /* Info.plist */,
 				B82D4B7D295419540034082D /* Action.js */,
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B82D4B72295416CA0034082D /* ActionViewController.swift in Sources */,
+				B82D4BBD2956BF240034082D /* ExampleScripts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

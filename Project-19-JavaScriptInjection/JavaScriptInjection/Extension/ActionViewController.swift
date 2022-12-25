@@ -14,9 +14,17 @@ class ActionViewController: UIViewController {
     
     var pageTitle = ""
     var pageURL = ""
+    var savedScriptsForURL: [String:String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Examples",
+            style: .plain,
+            target: self,
+            action: #selector(showExampleScripts)
+        )
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .done,
@@ -49,13 +57,38 @@ class ActionViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         self?.title = self?.pageTitle
+                        self?.getSavedScriptsForURL()
                     }
                 }
             }
         }
     }
+    
+    func getSavedScriptsForURL() {
+        savedScriptsForURL = UserDefaults.standard.dictionary(forKey: "SavedScriptsForURL") as? [String:String] ?? [:]
+        
+        if let url = URL(string: pageURL) {
+            if let host = url.host {
+                scriptTextView.text = savedScriptsForURL[host]
+            }
+        }
+    }
+    
+    func setSavedScriptsForURL() {
+        if let url = URL(string: pageURL) {
+            if let host = url.host {
+                savedScriptsForURL.updateValue(scriptTextView.text, forKey: host)
+            }
+        }
+        
+        UserDefaults.standard.set(savedScriptsForURL, forKey: "SavedScriptsForURL")
+    }
 
-    @IBAction func done() {
+    @objc func done() {
+        DispatchQueue.global(qos: .background).async {
+            self.setSavedScriptsForURL()
+        }
+        
         let item = NSExtensionItem()
         let argument: NSDictionary = ["customJavaScript": scriptTextView.text ?? ""]
         let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
@@ -63,6 +96,30 @@ class ActionViewController: UIViewController {
         
         item.attachments = [customJavaScript]
         extensionContext?.completeRequest(returningItems: [item])
+    }
+    
+    @objc func showExampleScripts() {
+        let examplesAlert = UIAlertController(
+            title: "Examples",
+            message: "Here are some pre-written example scripts.",
+            preferredStyle: .actionSheet
+        )
+        
+        examplesAlert.addAction(
+            UIAlertAction(title: "Display an alert", style: .default) { [weak self] _ in
+                self?.scriptTextView.text = ExampleScripts.displayAlert.rawValue
+            }
+        )
+        
+        examplesAlert.addAction(
+            UIAlertAction(title: "Replace page content", style: .default) { [weak self] _ in
+                self?.scriptTextView.text = ExampleScripts.replacePageContent.rawValue
+            }
+        )
+        
+        examplesAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(examplesAlert, animated: true)
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
