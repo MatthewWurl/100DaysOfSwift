@@ -62,7 +62,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [ ] Milestone (Projects 16-18) [Day 66]
 ---
 ### Leveling up
-- [ ] Project 19 [Days 67-69]
+- [x] [Project 19: JavaScript Injection](Project-19-JavaScriptInjection) [Days 67-69]
 - [x] [Project 20: Fireworks Night](Project-20-FireworksNight) [Days 70-71]
 - [ ] Project 21 [Days 72-73]
 ### Consolidation VIII
