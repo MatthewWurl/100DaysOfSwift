@@ -19,7 +19,7 @@ class GameScene: SKScene {
     
     var score = 0 {
         didSet {
-            scoreLabel.text = "Score: \(score)"
+            scoreLabel.text = "Score: \(score.formatted())"
         }
     }
     
@@ -85,7 +85,7 @@ class GameScene: SKScene {
     }
     
     @objc func launchFireworks() {
-        guard numberOfLaunches < 5 else {
+        guard numberOfLaunches < 10 else {
             endGame()
             return
         }
