@@ -19,18 +19,21 @@ class ActionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
+        let examplesButton = UIBarButtonItem (
             title: "Examples",
             style: .plain,
             target: self,
             action: #selector(showExampleScripts)
         )
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        let doneButton = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
             action: #selector(done)
         )
+        
+        navigationItem.leftBarButtonItem = examplesButton
+        navigationItem.rightBarButtonItem = doneButton
         
         NotificationCenter.default.addObserver(
             self,
