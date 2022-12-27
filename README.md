@@ -63,7 +63,7 @@ These projects were built for iOS 16 with Xcode 14.
 ---
 ### Leveling up
 - [ ] Project 19 [Days 67-69]
-- [ ] Project 20 [Days 70-71]
+- [x] [Project 20: Fireworks Night](Project-20-FireworksNight) [Days 70-71]
 - [ ] Project 21 [Days 72-73]
 ### Consolidation VIII
 - [ ] Milestone (Projects 19-21) [Day 74]
