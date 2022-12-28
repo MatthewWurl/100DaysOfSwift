@@ -25,7 +25,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
             title: "Schedule",
             style: .plain,
             target: self,
-            action: #selector(scheduleLocal)
+            action: #selector(defaultSchedule)
         )
         
         navigationItem.leftBarButtonItem = registerLocalButton
@@ -42,21 +42,27 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         }
     }
     
-    @objc func scheduleLocal() {
+    @objc func defaultSchedule() {
+        scheduleLocal(withTimeInterval: 5) // Show in 5 seconds...
+    }
+    
+    func scheduleLocal(withTimeInterval timeInterval: TimeInterval) {
         registerCategories()
         
         center.removeAllPendingNotificationRequests()
         
         let content = UNMutableNotificationContent()
-        content.title = "Late wake up call"
+        content.title = "Late Wake Up Call ⏰"
         content.body = "The early bird catches the worm, but the second mouse gets the cheese."
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = .default
         
+        // Notification at a set time...
         // let dateComponents = DateComponents(hour: 10, minute: 30) // Triggers at 10:30 am...
         // let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
         
         let request = UNNotificationRequest(
             identifier: UUID().uuidString,
@@ -75,7 +81,14 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
             title: "Tell me more...",
             options: .foreground
         )
-        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+        
+        let remindLater = UNNotificationAction(
+            identifier: "remindLater",
+            title: "Remind me later",
+            options: .foreground
+        )
+        
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show, remindLater], intentIdentifiers: [])
         
         center.setNotificationCategories([category])
     }
@@ -89,14 +102,26 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
             switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
                 // The user swiped to unlock...
-                print("Default identifier.")
+                showUIAlertController(title: "Swipe", message: "The user swiped to unlock.")
             case "show":
-                print("Show more information...")
+                showUIAlertController(title: "Show pressed", message: "The user pressed \"Tell me more...\".")
+            case "remindLater":
+                scheduleLocal(withTimeInterval: 24*60*60) // Show in roughly 24 hours...
+                showUIAlertController(title: "Remind later pressed", message: "The user pressed \"Remind me later\".")
             default:
                 break
             }
         }
         
         completionHandler()
+    }
+    
+    func showUIAlertController(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: "OK", style: .default)
+        )
+        
+        present(alert, animated: true)
     }
 }
