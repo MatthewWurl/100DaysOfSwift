@@ -25,7 +25,7 @@ class GameScene: SKScene {
     var gameTimer: Timer?
     var targetTimer: Timer?
     
-    var shotsRemaining = 5 {
+    var shotsRemaining = 6 {
         didSet {
             shotsRemainingLabel.text = "Shots: \(shotsRemaining)"
         }
@@ -76,7 +76,7 @@ class GameScene: SKScene {
     
     func startGame() {
         score = 0
-        shotsRemaining = 5
+        shotsRemaining = 6
         timeRemaining = 60
         
         gameTimer = Timer.scheduledTimer(
