@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var distanceReadingLabel: UILabel!
+    @IBOutlet weak var beaconLabel: UILabel!
     
     var locationManager: CLLocationManager?
+    var beaconDetected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +67,30 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
         if let beacon = beacons.first {
             update(distance: beacon.proximity)
+            
+            switch beaconDetected {
+            case true:
+                break
+            case false:
+                showFirstDetectionAlert()
+                beaconDetected = true
+            }
         } else {
             update(distance: .unknown)
         }
+    }
+    
+    func showFirstDetectionAlert() {
+        let detectionAlert = UIAlertController(
+            title: "Beacon Detected",
+            message: "A beacon has been detected nearby.",
+            preferredStyle: .alert
+        )
+        
+        detectionAlert.addAction(
+            UIAlertAction(title: "OK", style: .default)
+        )
+        
+        present(detectionAlert, animated: true)
     }
 }

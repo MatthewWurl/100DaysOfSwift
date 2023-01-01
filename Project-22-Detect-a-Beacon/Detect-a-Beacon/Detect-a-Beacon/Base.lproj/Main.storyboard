@@ -22,15 +22,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beacon: ???" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irH-BD-3Rq">
+                                <rect key="frame" x="134" y="472.66666666666669" width="125" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="FnT-Uk-zAD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Bof-VO-et5"/>
+                            <constraint firstItem="irH-BD-3Rq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="d96-Xe-Bg8"/>
                             <constraint firstItem="FnT-Uk-zAD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="nrA-Mx-Hbd"/>
+                            <constraint firstItem="irH-BD-3Rq" firstAttribute="top" secondItem="FnT-Uk-zAD" secondAttribute="bottom" constant="10" id="t0X-Ow-A0B"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="beaconLabel" destination="irH-BD-3Rq" id="h7U-9d-XFc"/>
                         <outlet property="distanceReadingLabel" destination="FnT-Uk-zAD" id="EsR-aV-xqc"/>
                     </connections>
                 </viewController>
