@@ -283,8 +283,6 @@ class GameScene: SKScene {
             break
         }
         
-        enemyType = [1, 7].randomElement()!
-        
         if enemyType == 0 { // Bomb...
             enemy = SKSpriteNode()
             enemy.zPosition = 1
