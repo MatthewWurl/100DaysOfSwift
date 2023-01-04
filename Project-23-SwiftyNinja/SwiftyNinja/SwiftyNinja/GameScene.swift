@@ -18,6 +18,16 @@ class GameScene: SKScene {
              three, four, chain, fastChain
     }
     
+    let enemyAngularVelocityRange: ClosedRange<CGFloat> = -3...3
+    let enemyPositionXRange = 64...960
+    let enemyPositionY = -128
+    let enemyXVelocity: [(CGFloat, ClosedRange<Int>)] = [
+        (maxPosition: 256, range: 8...15),
+        (maxPosition: 512, range: 3...5),
+        (maxPosition: 768, range: (-5)...(-3)),
+        (maxPosition: 1024, range: (-15)...(-8))
+    ]
+    
     var activeEnemies: [SKSpriteNode] = []
     var activeSliceBG: SKShapeNode!
     var activeSliceFG: SKShapeNode!
@@ -136,7 +146,7 @@ class GameScene: SKScene {
         let nodesAtPoint = nodes(at: location)
         
         for case let node as SKSpriteNode in nodesAtPoint {
-            if node.name == "Enemy" {
+            if node.name == "Enemy" || node.name == "FastEnemy" {
                 // Destroy the penguin...
                 if let emitter = SKEmitterNode(fileNamed: "sliceHitEnemy") {
                     emitter.position = node.position
@@ -153,7 +163,11 @@ class GameScene: SKScene {
                 let seq = SKAction.sequence([group, .removeFromParent()])
                 node.run(seq)
                 
-                score += 1
+                if node.name == "Enemy" {
+                    score += 1
+                } else if node.name == "FastEnemy" {
+                    score += 4
+                }
                 
                 if let index = activeEnemies.firstIndex(of: node) {
                     activeEnemies.remove(at: index)
@@ -205,6 +219,13 @@ class GameScene: SKScene {
             livesImages[1].texture = SKTexture(imageNamed: "sliceLifeGone")
             livesImages[2].texture = SKTexture(imageNamed: "sliceLifeGone")
         }
+        
+        let gameOverLabel = SKLabelNode(fontNamed: "Chalkduster")
+        gameOverLabel.text = "Game Over!"
+        gameOverLabel.position = CGPoint(x: 512, y: 384)
+        gameOverLabel.fontSize = 48
+        gameOverLabel.zPosition = 3
+        addChild(gameOverLabel)
     }
     
     func playSwooshSound() {
@@ -250,7 +271,8 @@ class GameScene: SKScene {
     func createEnemy(forceBomb: ForceBomb = .random) {
         let enemy: SKSpriteNode
         
-        var enemyType = Int.random(in: 0...6)
+        // Bomb = 0, penguin = 1-6, fast penguin = 7...
+        var enemyType = Int.random(in: 0...7)
         
         switch forceBomb {
         case .never:
@@ -261,7 +283,9 @@ class GameScene: SKScene {
             break
         }
         
-        if enemyType == 0 {
+        enemyType = [1, 7].randomElement()!
+        
+        if enemyType == 0 { // Bomb...
             enemy = SKSpriteNode()
             enemy.zPosition = 1
             enemy.name = "BombContainer"
@@ -286,34 +310,40 @@ class GameScene: SKScene {
                 emitter.position = CGPoint(x: 76, y: 64)
                 enemy.addChild(emitter)
             }
-        } else {
+        } else if enemyType <= 6 { // Normal penguin...
             enemy = SKSpriteNode(imageNamed: "penguin")
             let launchSound = SKAction.playSoundFileNamed("launch.caf", waitForCompletion: false)
             run(launchSound)
             enemy.name = "Enemy"
+        } else { // Fast penguin...
+            enemy = SKSpriteNode(imageNamed: "fastPenguin")
+            let launchSound = SKAction.playSoundFileNamed("launch.caf", waitForCompletion: false)
+            run(launchSound)
+            enemy.name = "FastEnemy"
         }
         
-        let randomX = Int.random(in: 64...960)
-        let randomPosition = CGPoint(x: randomX, y: -128)
+        let randomPosition = CGPoint(x: Int.random(in: enemyPositionXRange), y: enemyPositionY)
         enemy.position = randomPosition
         
-        let randomAngularVelocity = CGFloat.random(in: -3...3)
-        let randomXVelocity: Int
+        let randomAngularVelocity = CGFloat.random(in: enemyAngularVelocityRange)
+        var randomXVelocity = 1
         
-        if randomPosition.x < 256 {
-            randomXVelocity = Int.random(in: 8...15)
-        } else if randomPosition.x < 512 {
-            randomXVelocity = Int.random(in: 3...5)
-        } else if randomPosition.x < 768 {
-            randomXVelocity = -1 * Int.random(in: 3...5)
-        } else {
-            randomXVelocity = -1 * Int.random(in: 8...15)
+        for (maxPosition, range) in enemyXVelocity {
+            if randomPosition.x < maxPosition {
+                randomXVelocity = Int.random(in: range)
+                break
+            }
         }
         
         let randomYVelocity = Int.random(in: 24...32)
+        let isFastPenguin = enemy.name == "FastPenguin"
+        let multiplier = isFastPenguin ? 120 : 40
         
         enemy.physicsBody = SKPhysicsBody(circleOfRadius: 64)
-        enemy.physicsBody?.velocity = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
+        enemy.physicsBody?.velocity = CGVector(
+            dx: randomXVelocity * multiplier,
+            dy: randomYVelocity * multiplier
+        )
         enemy.physicsBody?.angularVelocity = randomAngularVelocity
         enemy.physicsBody?.collisionBitMask = 0
         
@@ -351,7 +381,7 @@ class GameScene: SKScene {
                 if node.position.y < -140 {
                     node.removeAllActions()
                     
-                    if node.name == "Enemy" {
+                    if node.name == "Enemy" || node.name == "FastEnemy" {
                         node.name = ""
                         subtractLife()
                         node.removeFromParent()
