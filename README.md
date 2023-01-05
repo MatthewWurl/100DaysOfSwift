@@ -71,7 +71,7 @@ These projects were built for iOS 16 with Xcode 14.
 ### Beacons and bombs
 - [ ] Project 22 [Days 75-76]
 - [ ] Project 23 [Days 77-79]
-- [ ] Project 24 [Days 80-81]
+- [x] [Project 24](Project-24-SwiftStrings) [Days 80-81]
 ### Consolidation IX
 - [ ] Milestone (Projects 22-24) [Day 82]
 ---
