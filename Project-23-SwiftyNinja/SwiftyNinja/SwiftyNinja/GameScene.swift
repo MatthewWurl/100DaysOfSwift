@@ -153,6 +153,12 @@ class GameScene: SKScene {
                     addChild(emitter)
                 }
                 
+                if node.name == "Enemy" {
+                    score += 1
+                } else if node.name == "FastEnemy" {
+                    score += 3
+                }
+                
                 node.name = ""
                 node.physicsBody?.isDynamic = false
                 
@@ -162,12 +168,6 @@ class GameScene: SKScene {
                 
                 let seq = SKAction.sequence([group, .removeFromParent()])
                 node.run(seq)
-                
-                if node.name == "Enemy" {
-                    score += 1
-                } else if node.name == "FastEnemy" {
-                    score += 4
-                }
                 
                 if let index = activeEnemies.firstIndex(of: node) {
                     activeEnemies.remove(at: index)
