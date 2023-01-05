@@ -89,3 +89,43 @@ attributedString2.addAttribute(.font, value: UIFont.systemFont(ofSize: 16), rang
 attributedString2.addAttribute(.font, value: UIFont.systemFont(ofSize: 24), range: NSRange(location: 8, length: 1))
 attributedString2.addAttribute(.font, value: UIFont.systemFont(ofSize: 32), range: NSRange(location: 10, length: 4))
 attributedString2.addAttribute(.font, value: UIFont.systemFont(ofSize: 40), range: NSRange(location: 15, length: 6))
+
+// MARK: - Challenges
+// Challenge 1...
+extension String {
+    func withPrefix(_ prefix: String) -> String {
+        guard !self.hasPrefix(prefix) else { return self }
+        
+        return prefix + self
+    }
+}
+
+print("house".withPrefix("tree")) // "treehouse"...
+
+// Challenge 2...
+extension String {
+    var isNumeric: Bool {
+        // Creating a Double from a String may return nil...
+        // Can try to cast all letters in the String to a Double and store them in an array... Some may return nil...
+        // Can use compact map to remove all nil values from the array...
+        // If the array is NOT empty, the String is numeric... It holds some type of number...
+        return !self.compactMap { Double(String($0)) }.isEmpty
+    }
+}
+
+let nonNumericString = "the sky was blue today"
+let numericString1 = "there are 7 days in a week"
+let numericString2 = "the number doesn't have to be isolat3d"
+print (nonNumericString.isNumeric) // false...
+print(numericString1.isNumeric) // true...
+print(numericString2.isNumeric) // true...
+
+
+// Challenge 3...
+extension String {
+    var lines: [String] {
+        return self.components(separatedBy: .newlines)
+    }
+}
+
+print("this\nis\na\ntest".lines) // An array with four elements...
