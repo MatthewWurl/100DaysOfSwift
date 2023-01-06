@@ -73,7 +73,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [x] [Project 23: Swifty Ninja](Project-23-SwiftyNinja) [Days 77-79]
 - [x] [Project 24: Swift Strings](Project-24-SwiftStrings) [Days 80-81]
 ### Consolidation IX
-- [ ] Milestone (Projects 22-24) [Day 82]
+- [x] [Milestone: Extensions Playground (Projects 22-24)](Milestone-22-24-ExtensionsPlayground) [Day 82]
 ---
 ### Multipeer and motion
 - [ ] Project 25 [Days 83-84]
