@@ -10,4 +10,4 @@
 
 ## Screenshots
 
-*No screenshots provided (since it is a playground).
+*No screenshots provided (since it is a playground).*
