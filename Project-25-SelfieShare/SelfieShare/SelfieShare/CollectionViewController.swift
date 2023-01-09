@@ -29,6 +29,13 @@ class CollectionViewController: UICollectionViewController,
             action: #selector(importPicture)
         )
         
+        let peersButon = UIBarButtonItem(
+            title: "Peers",
+            style: .plain,
+            target: self,
+            action: #selector(showConnectedPeers)
+        )
+        
         let addButton = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
@@ -105,6 +112,15 @@ class CollectionViewController: UICollectionViewController,
                 }
             }
         }
+    }
+    
+    @objc func showConnectedPeers() {
+        let namesArray = mcSession?.connectedPeers.map { $0.displayName } ?? ["None"]
+        
+        let ac = UIAlertController(
+            title: "Connected peers",
+            message: namesArray.joined(separator: "\n"),
+            preferredStyle: .actionSheet)
     }
     
     @objc func showConnectionPrompt() {
