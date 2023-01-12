@@ -15,6 +15,7 @@
 		B8F45FE1296D107C00DC1E8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8F45FE0296D107C00DC1E8B /* Assets.xcassets */; };
 		B8F45FE4296D107C00DC1E8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F45FE2296D107C00DC1E8B /* LaunchScreen.storyboard */; };
 		B8F45FEB296D116800DC1E8B /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = B8F45FEA296D116700DC1E8B /* level1.txt */; };
+		B8F45FEE296F7E1500DC1E8B /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = B8F45FED296F7E1500DC1E8B /* level2.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B8F45FE0296D107C00DC1E8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8F45FE3296D107C00DC1E8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8F45FEA296D116700DC1E8B /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		B8F45FED296F7E1500DC1E8B /* level2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +65,21 @@
 				B8F45FD5296D107B00DC1E8B /* GameScene.sks */,
 				B8F45FD9296D107B00DC1E8B /* GameScene.swift */,
 				B8F45FDB296D107B00DC1E8B /* GameViewController.swift */,
-				B8F45FEA296D116700DC1E8B /* level1.txt */,
+				B8F45FEC296F7E0400DC1E8B /* Levels */,
 				B8F45FDD296D107B00DC1E8B /* Main.storyboard */,
 				B8F45FE0296D107C00DC1E8B /* Assets.xcassets */,
 				B8F45FE2296D107C00DC1E8B /* LaunchScreen.storyboard */,
 			);
 			path = MarbleMaze;
+			sourceTree = "<group>";
+		};
+		B8F45FEC296F7E0400DC1E8B /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				B8F45FEA296D116700DC1E8B /* level1.txt */,
+				B8F45FED296F7E1500DC1E8B /* level2.txt */,
+			);
+			path = Levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +142,7 @@
 			files = (
 				B8F45FEB296D116800DC1E8B /* level1.txt in Resources */,
 				B8F45FDF296D107B00DC1E8B /* Main.storyboard in Resources */,
+				B8F45FEE296F7E1500DC1E8B /* level2.txt in Resources */,
 				B8F45FD6296D107B00DC1E8B /* GameScene.sks in Resources */,
 				B8F45FE1296D107C00DC1E8B /* Assets.xcassets in Resources */,
 				B8F45FE4296D107C00DC1E8B /* LaunchScreen.storyboard in Resources */,
