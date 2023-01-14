@@ -15,7 +15,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawRectangle()
+        #warning("Uncomment rectangle")
+//        drawRectangle()
+        drawHappyFaceEmoji()
     }
     
     @IBAction func redrawTapped(_ sender: UIButton) {
@@ -38,6 +40,8 @@ class ViewController: UIViewController {
             drawLines()
         case 5:
             drawImagesAndText()
+        case 6:
+            drawHappyFaceEmoji()
         default:
             break
         }
@@ -178,6 +182,40 @@ class ViewController: UIViewController {
             let mouse = UIImage(named: "mouse")
             let point = CGPoint(x: 300, y: 150)
             mouse?.draw(at: point)
+        }
+        
+        imageView.image = image
+    }
+    
+    func drawHappyFaceEmoji() {
+        let rendererSize = CGSize(width: 512, height: 512)
+        let renderer = UIGraphicsImageRenderer(size: rendererSize)
+        
+        let image = renderer.image { context in
+            // Draw background of emoji...
+            let rect = CGRect(x: 0, y: 0, width: 512, height: 512)
+            let emojiBackgroundColor = CGColor(red: 0.984, green: 0.780, blue: 0.169, alpha: 1)
+            context.cgContext.setFillColor(emojiBackgroundColor)
+            context.cgContext.addEllipse(in: rect)
+            context.cgContext.drawPath(using: .fill)
+            
+            // Draw eyes...
+            let emojiForegroundColor = CGColor(red: 0.643, green: 0.420, blue: 0.169, alpha: 1)
+            context.cgContext.setFillColor(emojiForegroundColor)
+            context.cgContext.setStrokeColor(emojiForegroundColor)
+            
+            let leftRect = CGRect(x: 256 - 80, y: 256 - 40, width: 60, height: 100).offsetBy(dx: -30, dy: -50)
+            context.cgContext.addEllipse(in: leftRect)
+            context.cgContext.drawPath(using: .fill)
+            
+            let rightRect = CGRect(x: 256 + 80, y: 256 - 40, width: 60, height: 100).offsetBy(dx: -30, dy: -50)
+            context.cgContext.addEllipse(in: rightRect)
+            context.cgContext.drawPath(using: .fill)
+            
+            let smilePath = UIBezierPath(arcCenter: CGPoint(x: 256, y: 256 + 80), radius: 100, startAngle: 300, endAngle: 330, clockwise: true).cgPath
+            context.cgContext.addPath(smilePath)
+            context.cgContext.setLineWidth(10)
+            context.cgContext.drawPath(using: .stroke)
         }
         
         imageView.image = image
