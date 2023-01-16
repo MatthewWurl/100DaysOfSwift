@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered'>
+    <pages>
+        <page name='Introduction'/>
+        <page name='Rectangles'/>
+        <page name='Stripes'/>
+        <page name='Flags'/>
+        <page name='Checkerboards'/>
+        <page name='Ellipses'/>
+        <page name='Flowers'/>
+        <page name='Strokes'/>
+        <page name='Rainbows'/>
+        <page name='Emoji'/>
+        <page name='Text'/>
+        <page name='Lines'/>
+        <page name='Images'/>
+        <page name='Translation'/>
+        <page name='Rotation'/>
+        <page name='Blending'/>
+        <page name='Sandbox'/>
+    </pages>
+</playground>
