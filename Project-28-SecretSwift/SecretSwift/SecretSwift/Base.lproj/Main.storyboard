@@ -16,17 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC3-34-XyR">
-                                <rect key="frame" x="136.33333333333334" y="438.66666666666669" width="120.66666666666666" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="OTl-GV-31c"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Authenticate"/>
-                                <connections>
-                                    <action selector="authenticateTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A0e-Qi-gje"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="PUN-jo-WIe">
+                                <rect key="frame" x="75.333333333333329" y="396.66666666666669" width="242.33333333333337" height="128.00000000000006"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC3-34-XyR">
+                                        <rect key="frame" x="0.0" y="0.0" width="242.33333333333334" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="OTl-GV-31c"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Authenticate with Biometrics"/>
+                                        <connections>
+                                            <action selector="authenticateWithBiometricsTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tRv-2l-Ejb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEB-Nn-WqV">
+                                        <rect key="frame" x="0.0" y="84" width="242.33333333333334" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="WgN-xo-Uh5"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Authenticate with Password"/>
+                                        <connections>
+                                            <action selector="authenticateWithPasswordTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MIH-c6-a5k"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4eM-Tr-gfd">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -38,12 +54,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OC3-34-XyR" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="E7Y-zJ-4nv"/>
                             <constraint firstItem="4eM-Tr-gfd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="F8P-66-CL9"/>
+                            <constraint firstItem="PUN-jo-WIe" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="FHj-ew-Xa0"/>
                             <constraint firstItem="4eM-Tr-gfd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QWj-Yj-uRs"/>
                             <constraint firstItem="4eM-Tr-gfd" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="hKy-BA-Y2e"/>
+                            <constraint firstItem="PUN-jo-WIe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tC1-Uv-WFD"/>
                             <constraint firstItem="4eM-Tr-gfd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="v4A-EP-n9N"/>
-                            <constraint firstItem="OC3-34-XyR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ygc-3M-qlO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9yK-6i-QXb"/>

@@ -11,10 +11,34 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var secretTextView: UITextView!
     
+    var hasPassword: Bool {
+        KeychainWrapper.standard.hasValue(forKey: "Password")
+    }
+    var doneButton: UIBarButtonItem!
+    var passwordButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Nothing to see here..."
+        
+        passwordButton = UIBarButtonItem(
+            title: "Password",
+            style: .plain,
+            target: self,
+            action: #selector(setPassword)
+        )
+        passwordButton.isHidden = true
+        
+        doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(saveSecretMessage)
+        )
+        doneButton.isHidden = true
+        
+        navigationItem.leftBarButtonItem = passwordButton
+        navigationItem.rightBarButtonItem = doneButton
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(
@@ -37,7 +61,7 @@ class ViewController: UIViewController {
         )
     }
 
-    @IBAction func authenticateTapped(_ sender: UIButton) {
+    @IBAction func authenticateWithBiometricsTapped(_ sender: UIButton) {
         let context = LAContext()
         var error: NSError?
         
@@ -67,8 +91,27 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func authenticateWithPasswordTapped(_ sender: UIButton) {
+        guard hasPassword else {
+            let ac = UIAlertController(
+                title: "No password set",
+                message: "Sorry, you must use biometric authentication until a password is set.",
+                preferredStyle: .alert
+            )
+            
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            present(ac, animated: true)
+            return
+        }
+        
+        // User has a password...
+    }
+    
     func unlockSecretMessage() {
         secretTextView.isHidden = false
+        passwordButton.isHidden = false
+        doneButton.isHidden = false
         
         title = "Secret Message"
         
@@ -82,8 +125,29 @@ class ViewController: UIViewController {
         
         secretTextView.resignFirstResponder()
         secretTextView.isHidden = true
+        passwordButton.isHidden = true
+        doneButton.isHidden = true
         
         title = "Nothing to see here..."
+    }
+    
+    @objc func setPassword() {
+        let ac = UIAlertController(
+            title: "Type your new password",
+            message: "This can be used instead of biometric authentication.",
+            preferredStyle: .alert
+        )
+        
+        ac.addTextField { textField in
+            textField.isSecureTextEntry = true
+            textField.placeholder = "Password"
+        }
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        // TODO: Add another "OK" action...
+        
+        present(ac, animated: true)
     }
     
     @objc func adjustForKeyboard(_ notification: Notification) {
