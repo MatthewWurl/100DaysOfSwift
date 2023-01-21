@@ -18,7 +18,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var buildings: [BuildingNode] = []
     var currentPlayer = 1
     var player1: SKSpriteNode!
+    var player1Score = 0
     var player2: SKSpriteNode!
+    var player2Score = 0
     weak var viewController: GameViewController?
     
     override func didMove(to view: SKView) {
