@@ -81,6 +81,7 @@ These projects were built for iOS 16 with Xcode 14.
 - [ ] Project 27 [Days 88-89]
 ### Consolidation X
 - [ ] Milestone (Projects 25-27) [Day 90]
+- [ ] Core Graphics Redux [Day 91]
 ---
 ### The Final Countdown
 - [ ] Project 28 [Days 92-93]
