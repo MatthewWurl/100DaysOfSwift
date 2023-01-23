@@ -105,7 +105,24 @@ class ViewController: UIViewController {
             return
         }
         
-        // User has a password...
+        let ac = UIAlertController(title: "Enter password", message: nil, preferredStyle: .alert)
+        
+        ac.addTextField { textField in
+            textField.isSecureTextEntry = true
+            textField.placeholder = "Password"
+        }
+        
+        ac.addAction(
+            UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
+                guard let passwordEntered = ac?.textFields?[0].text else { return }
+                
+                if passwordEntered == KeychainWrapper.standard.string(forKey: "Password") {
+                    self?.unlockSecretMessage()
+                }
+            }
+        )
+        
+        present(ac, animated: true)
     }
     
     func unlockSecretMessage() {
@@ -145,7 +162,13 @@ class ViewController: UIViewController {
         
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
-        // TODO: Add another "OK" action...
+        ac.addAction(
+            UIAlertAction(title: "OK", style: .default) { [weak ac] _ in
+                guard let password = ac?.textFields?[0].text else { return }
+                
+                KeychainWrapper.standard.set(password, forKey: "Password")
+            }
+        )
         
         present(ac, animated: true)
     }
