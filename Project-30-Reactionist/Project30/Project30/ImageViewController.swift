@@ -18,7 +18,7 @@ class ImageViewController: UIViewController {
 	override func loadView() {
 		super.loadView()
 		
-		view.backgroundColor = UIColor.black
+		view.backgroundColor = UIColor.white
 
 		// create an image view that fills the screen
 		imageView = UIImageView()
