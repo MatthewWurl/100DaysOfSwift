@@ -89,3 +89,8 @@ These projects were built for iOS 16 with Xcode 14.
 - [ ] Project 30 [Days 97-98]
 ### Consolidation XI
 - [ ] Milestone (Projects 28-30) [Day 99]
+
+## Completion
+Course completed on January 24, 2022. Achieved certificate of distinction.
+
+<img src="certificate.jpg" width="720">
